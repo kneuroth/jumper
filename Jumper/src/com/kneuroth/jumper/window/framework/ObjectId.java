@@ -12,6 +12,6 @@ package com.kneuroth.jumper.window.framework;
 public enum ObjectId {
     
     Player(),
-    Test();
+    Block();
     
 }

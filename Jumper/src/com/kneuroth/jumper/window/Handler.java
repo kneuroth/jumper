@@ -6,6 +6,8 @@
 package com.kneuroth.jumper.window;
 
 import com.kneuroth.jumper.window.framework.GameObject;
+import com.kneuroth.jumper.window.framework.ObjectId;
+import com.kneuroth.jumper.window.framework.objects.Block;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
@@ -41,6 +43,12 @@ public class Handler {
     
     public void removeObject(GameObject object){
         this.object.remove(object);
+    }
+    
+    public void createLevel(){
+        for(int xx = 0; xx < Game.WIDTH + 32; xx+=32){
+            addObject(new Block( xx, Game.HEIGHT - 32, ObjectId.Block));
+        }
     }
     
 }

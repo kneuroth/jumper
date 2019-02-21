@@ -6,8 +6,7 @@
 package com.kneuroth.jumper.window;
 
 import com.kneuroth.jumper.window.framework.ObjectId;
-import static com.kneuroth.jumper.window.framework.ObjectId.Test;
-import com.kneuroth.jumper.window.framework.objects.Test;
+import com.kneuroth.jumper.window.framework.objects.Block;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -17,7 +16,7 @@ import static java.lang.Math.random;
 /**
  *
  * @author Kelly
- * Any time 'this' is used it refers to caanvas
+ * Any time 'this' is used it refers to canvas
  */
 public class Game extends Canvas implements Runnable {
     
@@ -26,11 +25,15 @@ public class Game extends Canvas implements Runnable {
     
     Handler handler;
     
+    public static int WIDTH, HEIGHT;
+    
     private void init(){
+        WIDTH = getWidth();
+        HEIGHT = getHeight();
         handler = new Handler();
-        for(int i = 0; i < 50; i++){
-            handler.addObject(new Test( (float)Math.random() * 800 , (float)Math.random() * 600 , ObjectId.Test));
-        }
+        
+        handler.createLevel();
+        
     }
     
     public synchronized void start(){
