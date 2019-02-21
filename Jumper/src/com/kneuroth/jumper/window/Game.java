@@ -5,10 +5,14 @@
  */
 package com.kneuroth.jumper.window;
 
+import com.kneuroth.jumper.window.framework.ObjectId;
+import static com.kneuroth.jumper.window.framework.ObjectId.Test;
+import com.kneuroth.jumper.window.framework.objects.Test;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import static java.lang.Math.random;
 
 /**
  *
@@ -24,6 +28,9 @@ public class Game extends Canvas implements Runnable {
     
     private void init(){
         handler = new Handler();
+        for(int i = 0; i < 50; i++){
+            handler.addObject(new Test( (float)Math.random() * 800 , (float)Math.random() * 600 , ObjectId.Test));
+        }
     }
     
     public synchronized void start(){

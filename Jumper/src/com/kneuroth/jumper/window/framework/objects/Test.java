@@ -7,6 +7,7 @@ package com.kneuroth.jumper.window.framework.objects;
 
 import com.kneuroth.jumper.window.framework.GameObject;
 import com.kneuroth.jumper.window.framework.ObjectId;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
@@ -22,32 +23,33 @@ public class Test extends GameObject{
  
     @Override
     public void tick(LinkedList<GameObject> object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     @Override
     public void render(Graphics g) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        g.setColor(Color.yellow);
+        g.fillRect((int)x, (int)y, 32, 32);
     }
 
     @Override
     public float getX() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return x;
     }
 
     @Override
     public float getY() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return y;
     }
 
     @Override
-    public float setX(float x) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setX(float x) {
+        this.x = x;
     }
 
     @Override
-    public float setY(float y) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setY(float y) {
+        this.y = y;
     }
 
     @Override
@@ -61,18 +63,18 @@ public class Test extends GameObject{
     }
 
     @Override
-    public float setVelX(float x) {
+    public void setVelX(float x) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public float setVelY(float y) {
+    public void setVelY(float y) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public ObjectId getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return id;
     }
     
 }

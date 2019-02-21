@@ -31,13 +31,13 @@ public abstract class GameObject {
     
     public abstract float getX();
     public abstract float getY();
-    public abstract float setX(float x);
-    public abstract float setY(float y);
+    public abstract void setX(float x);
+    public abstract void setY(float y);
     
     public abstract float getVelX();
     public abstract float getVelY();
-    public abstract float setVelX(float x);
-    public abstract float setVelY(float y);
+    public abstract void setVelX(float x);
+    public abstract void setVelY(float y);
     
     public abstract ObjectId getId();
     
