@@ -20,6 +20,12 @@ public class Game extends Canvas implements Runnable {
     private boolean running = false;
     private Thread thread;
     
+    Handler handler;
+    
+    private void init(){
+        handler = new Handler();
+    }
+    
     public synchronized void start(){
         if(running)
             return;
@@ -30,6 +36,8 @@ public class Game extends Canvas implements Runnable {
     
     @Override
     public void run(){
+        init();
+        this.requestFocus();
        //standard gameloop running at 60 fps 
        long lastTime = System.nanoTime();
        double amountOfTicks = 60.0;
@@ -58,9 +66,9 @@ public class Game extends Canvas implements Runnable {
         }
     }
     
-    //updates
+    //updates ALL of the objects because of handler
     private void tick(){
-        
+        handler.tick();
     }
     
     //draw graphics
@@ -79,6 +87,7 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.black);
         g.fillRect(0,0,getWidth(), getHeight());
         
+        handler.render(g);
         
         /*---------------------------------*/
         g.dispose();
