@@ -39,5 +39,7 @@ public abstract class GameObject {
     public abstract float setVelX(float x);
     public abstract float setVelY(float y);
     
+    public abstract ObjectId getId();
+    
     
 }

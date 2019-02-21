@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.kneuroth.jumper.window.framework;
+package com.kneuroth.jumper.window.framework.objects;
 
 /**
  *
  * @author Kelly
  */
-public enum ObjectId {
-    
-    Player();
+public class Test {
     
 }
