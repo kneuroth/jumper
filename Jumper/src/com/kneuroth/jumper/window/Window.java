@@ -28,7 +28,7 @@ public class Window {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         
-        game.run();
+        game.start();
     }
     
 }

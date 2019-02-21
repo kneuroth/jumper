@@ -6,10 +6,14 @@
 package com.kneuroth.jumper.window;
 
 import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 
 /**
  *
  * @author Kelly
+ * Any time 'this' is used it refers to caanvas
  */
 public class Game extends Canvas implements Runnable {
     
@@ -26,12 +30,65 @@ public class Game extends Canvas implements Runnable {
     
     @Override
     public void run(){
-       System.out.println("Thread began");
+       //standard gameloop running at 60 fps 
+       long lastTime = System.nanoTime();
+       double amountOfTicks = 60.0;
+       double ns = 1000000000 / amountOfTicks;
+       double delta = 0;
+       long timer = System.currentTimeMillis();
+       int updates = 0;
+       int frames = 0;
+       while(running){
+            long now = System.nanoTime();
+            delta += (now - lastTime) / ns;
+            lastTime = now;
+            while(delta >= 1){
+                tick();
+                updates++;
+                delta--;
+            }
+            render();
+            frames++;
+            if(System.currentTimeMillis() - timer > 1000){
+                timer += 1000;
+                System.out.println("FPS: " + frames + " TICKS: " + updates);
+                frames = 0;
+                updates = 0;
+            }
+        }
+    }
+    
+    //updates
+    private void tick(){
+        
+    }
+    
+    //draw graphics
+    
+    private void render(){
+        BufferStrategy bs = this.getBufferStrategy();
+        if(bs == null){
+            //triple buffering loads 3 next screens in advance
+            this.createBufferStrategy(3);
+            return;
+        }
+        
+        Graphics g = bs.getDrawGraphics();
+        /*-----------------DRAW HERE----------------*/
+        
+        g.setColor(Color.black);
+        g.fillRect(0,0,getWidth(), getHeight());
+        
+        
+        /*---------------------------------*/
+        g.dispose();
+        bs.show();
+        
     }
     
     public static void main(String args[]){
         new Window(800, 500, "Platformer prototype", new Game());
-            
+        
         
     }
 }
