@@ -7,6 +7,7 @@ package com.kneuroth.jumper.window;
 
 import com.kneuroth.jumper.window.framework.ObjectId;
 import com.kneuroth.jumper.window.framework.objects.Block;
+import com.kneuroth.jumper.window.framework.objects.Player;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -31,6 +32,8 @@ public class Game extends Canvas implements Runnable {
         WIDTH = getWidth();
         HEIGHT = getHeight();
         handler = new Handler();
+        
+        handler.addObject(new Player(100, 100, ObjectId.Player ));
         
         handler.createLevel();
         

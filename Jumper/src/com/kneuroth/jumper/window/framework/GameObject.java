@@ -20,6 +20,9 @@ public abstract class GameObject {
     protected ObjectId id;
     protected float velX = 0, velY = 0;
     
+    protected boolean falling = true;
+    protected boolean jumping = false;
+    
     public GameObject(float x, float y, ObjectId id){
         this.x = x;
         this.y = y;
@@ -31,6 +34,19 @@ public abstract class GameObject {
     public abstract void render(Graphics g);
     
     public abstract Rectangle getBounds();
+    
+    public boolean getFalling(){
+        return falling;
+    }
+    public void setFalling(boolean f){
+        this.falling = f;
+    }
+    public boolean getJumping(){
+        return jumping;
+    }
+    public void setJumping(boolean j){
+        this.jumping = j;
+    }
     
     public float getX(){
         return x;
