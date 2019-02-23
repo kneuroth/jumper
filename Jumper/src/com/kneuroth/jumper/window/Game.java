@@ -5,6 +5,7 @@
  */
 package com.kneuroth.jumper.window;
 
+import com.kneuroth.jumper.window.framework.KeyInput;
 import com.kneuroth.jumper.window.framework.ObjectId;
 import com.kneuroth.jumper.window.framework.objects.Block;
 import com.kneuroth.jumper.window.framework.objects.Player;
@@ -33,9 +34,11 @@ public class Game extends Canvas implements Runnable {
         HEIGHT = getHeight();
         handler = new Handler();
         
-        handler.addObject(new Player(100, 100, ObjectId.Player ));
+        handler.addObject(new Player(100, 100, handler, ObjectId.Player ));
         
         handler.createLevel();
+        
+        this.addKeyListener(new KeyInput(handler));
         
     }
     

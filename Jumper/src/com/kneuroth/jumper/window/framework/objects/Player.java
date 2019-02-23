@@ -5,6 +5,7 @@
  */
 package com.kneuroth.jumper.window.framework.objects;
 
+import com.kneuroth.jumper.window.Handler;
 import com.kneuroth.jumper.window.framework.GameObject;
 import com.kneuroth.jumper.window.framework.ObjectId;
 import java.awt.Color;
@@ -23,16 +24,19 @@ public class Player extends GameObject{
     private float gravity = 0.5f;
     
     private final float MAX_SPEED = 10;
+    
+    private Handler handler;
    
     
-    public Player(float x, float y, ObjectId id){
+    public Player(float x, float y, Handler handler, ObjectId id){
         super(x, y, id);
+        this.handler = handler;
     }
 
     @Override
     public void tick(LinkedList<GameObject> object) {
         x += velX;
-        //y += velY;
+        y += velY;
         
         //Gravity will affect it if falling or jumping
         if(falling || jumping){
@@ -42,7 +46,24 @@ public class Player extends GameObject{
             if(velY > MAX_SPEED){
                 velY = MAX_SPEED;
             }
-        }        
+        }
+        Collision(object);
+    }
+    
+    //Takes care of what happens what collision happens
+    private void Collision(LinkedList<GameObject> object){
+        for(int i = 0; i < handler.object.size(); i++){
+            GameObject tempObject = handler.object.get(i);
+            
+            if(tempObject.getId() == ObjectId.Block){
+                if(getBounds().intersects(tempObject.getBounds())){
+                    y = tempObject.getY() - height;
+                    velY = 0;
+                    falling = false;
+                    jumping = false;
+                }
+            }
+        }
     }
 
     @Override
