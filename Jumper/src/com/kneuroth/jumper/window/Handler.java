@@ -49,6 +49,15 @@ public class Handler {
         for(int xx = 0; xx < Game.WIDTH + 32; xx+=32){
             addObject(new Block( xx, Game.HEIGHT - 32, ObjectId.Block));
         }
+        for(int i = 0; i < Game.HEIGHT + 32; i += 32){
+            addObject(new Block(0, i, ObjectId.Block));
+        }
+        for(int i = 0; i < Game.HEIGHT + 32; i += 32){
+            addObject(new Block(Game.WIDTH - 32, i, ObjectId.Block));
+        }
+        for(int i = 0; i < Game.WIDTH / 3; i+=32){
+            addObject(new Block(Game.WIDTH / 3 + i + 32, Game.HEIGHT /2 + 10, ObjectId.Block ));
+        }
     }
     
 }

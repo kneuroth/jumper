@@ -56,11 +56,25 @@ public class Player extends GameObject{
             GameObject tempObject = handler.object.get(i);
             
             if(tempObject.getId() == ObjectId.Block){
+                if(getBoundsTop().intersects(tempObject.getBounds())){
+                    y = tempObject.getY()+ 32;//removing this makes slider block
+                    velY = 0;
+                }
+            
                 if(getBounds().intersects(tempObject.getBounds())){
                     y = tempObject.getY() - height;
                     velY = 0;
                     falling = false;
                     jumping = false;
+                }else{
+                    falling = true;
+                }
+                
+                if(getBoundsRight().intersects(tempObject.getBounds())){
+                    x = tempObject.getX() - width;
+                }
+                if(getBoundsLeft().intersects(tempObject.getBounds())){
+                    x = tempObject.getX() + 35;
                 }
             }
         }
@@ -74,12 +88,7 @@ public class Player extends GameObject{
         g.setColor(Color.blue);
         g.fillRect((int)x, (int)y, (int)width, (int)height);
         
-        Graphics2D g2d = (Graphics2D) g;
-        g.setColor(Color.red);
-        g2d.draw(getBounds());
-        g2d.draw(getBoundsRight());
-        g2d.draw(getBoundsLeft());
-        g2d.draw(getBoundsTop());
+   
     }
 
     @Override

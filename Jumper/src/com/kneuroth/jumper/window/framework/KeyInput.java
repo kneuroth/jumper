@@ -30,8 +30,20 @@ public class KeyInput extends KeyAdapter{
             
             //If this is the player
             if(tempObject.getId() == ObjectId.Player){
-                if(key == KeyEvent.VK_D) tempObject.setVelX(5);
-                if(key == KeyEvent.VK_A) tempObject.setVelX(-5);
+                
+                if(key == KeyEvent.VK_D && tempObject.getVelX() < tempObject.MAX_X_SPEED){
+                    tempObject.setVelX(tempObject.MAX_X_SPEED);
+                }
+                if(key == KeyEvent.VK_A && tempObject.getVelX() > -tempObject.MAX_X_SPEED){
+                    tempObject.setVelX(-tempObject.MAX_X_SPEED);
+                }
+                
+                
+                
+                if(key == KeyEvent.VK_SPACE && !tempObject.isJumping()){
+                    tempObject.setJumping(true);
+                    tempObject.setVelY(-10);
+                }
             }
         }
         
@@ -49,8 +61,12 @@ public class KeyInput extends KeyAdapter{
             
             //If this is the player
             if(tempObject.getId() == ObjectId.Player){
-                if(key == KeyEvent.VK_D) tempObject.setVelX(0);
-                if(key == KeyEvent.VK_A) tempObject.setVelX(0);
+                if(key == KeyEvent.VK_D){
+                    tempObject.setVelX(-tempObject.MAX_X_SPEED);
+                }
+                if(key == KeyEvent.VK_A){
+                    tempObject.setVelX(tempObject.MAX_X_SPEED);
+                }
             }
         }
     }

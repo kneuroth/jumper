@@ -16,6 +16,8 @@ import java.util.LinkedList;
  */
 public abstract class GameObject {
     
+    protected final int MAX_X_SPEED = 7;
+    
     protected float x,y;
     protected ObjectId id;
     protected float velX = 0, velY = 0;
@@ -35,13 +37,13 @@ public abstract class GameObject {
     
     public abstract Rectangle getBounds();
     
-    public boolean getFalling(){
+    public boolean isFalling(){
         return falling;
     }
     public void setFalling(boolean f){
         this.falling = f;
     }
-    public boolean getJumping(){
+    public boolean isJumping(){
         return jumping;
     }
     public void setJumping(boolean j){
@@ -68,7 +70,7 @@ public abstract class GameObject {
         return velY;
     }
     public void setVelX(float velX){
-        this.velX = velX;
+        this.velX += velX;
     }
     public void setVelY(float velY){
         this.velY = velY;
