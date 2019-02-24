@@ -5,6 +5,7 @@
  */
 package com.kneuroth.jumper.window.framework.objects;
 
+import com.kneuroth.jumper.window.Game;
 import com.kneuroth.jumper.window.Handler;
 import com.kneuroth.jumper.window.framework.GameObject;
 import com.kneuroth.jumper.window.framework.ObjectId;
@@ -20,8 +21,8 @@ import java.util.LinkedList;
  */
 public class Player extends GameObject{
     
-    private float width = 48, height = 96;
-    private float gravity = 0.5f;
+    private float width = 40, height = 40; //48 96
+    private float gravity = 0.7f;
     
     private final float MAX_SPEED = 10;
     
@@ -48,9 +49,10 @@ public class Player extends GameObject{
             }
         }
         Collision(object);
+        System.out.println(velX);
     }
     
-    //Takes care of what happens what collision happens
+    //Takes care of what happens when collision happens
     private void Collision(LinkedList<GameObject> object){
         for(int i = 0; i < handler.object.size(); i++){
             GameObject tempObject = handler.object.get(i);
@@ -71,10 +73,27 @@ public class Player extends GameObject{
                 }
                 
                 if(getBoundsRight().intersects(tempObject.getBounds())){
-                    x = tempObject.getX() - width;
+                    x = tempObject.getX() - 42;
+                    System.out.println(tempObject.getX());
                 }
                 if(getBoundsLeft().intersects(tempObject.getBounds())){
                     x = tempObject.getX() + 35;
+                }
+            }
+            
+            if(tempObject.getId() == ObjectId.Rail){
+                if(getBoundsTop().intersects(tempObject.getBounds())){
+                    y = tempObject.getY();//removing this makes slider block
+                    falling = false;
+                    jumping = false;
+                    velY = 0;
+                } 
+            }
+            
+            if(tempObject.getId() == ObjectId.Portal){
+                if(getBounds().intersects(tempObject.getBounds())){
+                    if(tempObject.getY() < Game.HEIGHT)
+                        y = tempObject.getY() - Game.HEIGHT + 100;
                 }
             }
         }
@@ -88,7 +107,13 @@ public class Player extends GameObject{
         g.setColor(Color.blue);
         g.fillRect((int)x, (int)y, (int)width, (int)height);
         
-   
+        /*Graphics2D g2d = (Graphics2D) g;
+        g.setColor(Color.red);
+        g2d.draw(getBounds());
+        g2d.draw(getBoundsRight());
+        g2d.draw(getBoundsLeft());
+        g2d.draw(getBoundsTop());
+        */
     }
 
     @Override
@@ -104,6 +129,7 @@ public class Player extends GameObject{
     public Rectangle getBoundsLeft() {
         return new Rectangle((int)x, (int)y + 5, (int)5, (int)height - 10);
     }
+
     
     
 }

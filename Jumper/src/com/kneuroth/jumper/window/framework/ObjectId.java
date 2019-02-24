@@ -12,6 +12,8 @@ package com.kneuroth.jumper.window.framework;
 public enum ObjectId {
     
     Player(),
-    Block();
+    Block(), 
+    Rail(),
+    Portal();
     
 }

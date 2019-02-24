@@ -5,6 +5,7 @@
  */
 package com.kneuroth.jumper.window.framework.objects;
 
+import com.kneuroth.jumper.window.Game;
 import com.kneuroth.jumper.window.framework.GameObject;
 import com.kneuroth.jumper.window.framework.ObjectId;
 import java.awt.Color;
@@ -16,29 +17,30 @@ import java.util.LinkedList;
  *
  * @author Kelly
  */
-public class Block extends GameObject{
+public class Portal extends GameObject {
     
-    public Block(float x, float y, ObjectId id) {
+    
+    public Portal(float x, float y, ObjectId id) {
         super(x, y, id);
     }
- 
+
     @Override
     public void tick(LinkedList<GameObject> object) {
-       
+        
     }
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.yellow);
+        g.setColor(Color.blue);
         g.drawRect((int)x, (int)y, 32, 32);
+        g.drawRect((int)x, (int)y - Game.HEIGHT + 100, 32, 32);
     }
-    
+
     @Override
-    public Rectangle getBounds(){
+    public Rectangle getBounds() {
         return new Rectangle((int)x, (int)y, 32, 32);
     }
 
-  
-}
-    
 
+    
+}

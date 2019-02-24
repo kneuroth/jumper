@@ -16,12 +16,12 @@ import java.util.LinkedList;
  *
  * @author Kelly
  */
-public class Block extends GameObject{
+public class Rail extends GameObject{
     
-    public Block(float x, float y, ObjectId id) {
+    public Rail(float x, float y, ObjectId id) {
         super(x, y, id);
     }
- 
+    
     @Override
     public void tick(LinkedList<GameObject> object) {
        
@@ -29,16 +29,15 @@ public class Block extends GameObject{
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.yellow);
+        g.setColor(Color.green);
         g.drawRect((int)x, (int)y, 32, 32);
     }
-    
+
     @Override
-    public Rectangle getBounds(){
+    public Rectangle getBounds() {
         return new Rectangle((int)x, (int)y, 32, 32);
     }
 
-  
-}
-    
 
+    
+}

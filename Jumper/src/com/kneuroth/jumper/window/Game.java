@@ -112,7 +112,7 @@ public class Game extends Canvas implements Runnable {
     }
     
     public static void main(String args[]){
-        new Window(800, 500, "Platformer prototype", new Game());
+        new Window(1000, 600, "Platformer prototype", new Game());
         
         
     }

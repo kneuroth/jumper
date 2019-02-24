@@ -7,7 +7,10 @@ package com.kneuroth.jumper.window;
 
 import com.kneuroth.jumper.window.framework.GameObject;
 import com.kneuroth.jumper.window.framework.ObjectId;
+import static com.kneuroth.jumper.window.framework.ObjectId.Portal;
 import com.kneuroth.jumper.window.framework.objects.Block;
+import com.kneuroth.jumper.window.framework.objects.Portal;
+import com.kneuroth.jumper.window.framework.objects.Rail;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
@@ -56,8 +59,12 @@ public class Handler {
             addObject(new Block(Game.WIDTH - 32, i, ObjectId.Block));
         }
         for(int i = 0; i < Game.WIDTH / 3; i+=32){
-            addObject(new Block(Game.WIDTH / 3 + i + 32, Game.HEIGHT /2 + 10, ObjectId.Block ));
+            addObject(new Rail(Game.WIDTH / 3 + i + 32, Game.HEIGHT * 3/4 + 10, ObjectId.Rail ));
         }
+
+  
+        addObject(new Portal(50, Game.HEIGHT - 100, ObjectId.Portal));
+        
     }
     
 }
