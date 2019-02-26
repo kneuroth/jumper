@@ -14,6 +14,7 @@ public enum ObjectId {
     Player(),
     Block(), 
     Rail(),
-    Portal();
+    Portal(),
+    BounceBlock();
     
 }

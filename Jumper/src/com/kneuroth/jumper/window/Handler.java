@@ -7,8 +7,10 @@ package com.kneuroth.jumper.window;
 
 import com.kneuroth.jumper.window.framework.GameObject;
 import com.kneuroth.jumper.window.framework.ObjectId;
+import static com.kneuroth.jumper.window.framework.ObjectId.BounceBlock;
 import static com.kneuroth.jumper.window.framework.ObjectId.Portal;
 import com.kneuroth.jumper.window.framework.objects.Block;
+import com.kneuroth.jumper.window.framework.objects.BounceBlock;
 import com.kneuroth.jumper.window.framework.objects.Portal;
 import com.kneuroth.jumper.window.framework.objects.Rail;
 import java.awt.Graphics;
@@ -64,6 +66,8 @@ public class Handler {
 
   
         addObject(new Portal(50, Game.HEIGHT - 100, ObjectId.Portal));
+        
+        addObject(new BounceBlock(100, Game.HEIGHT - 100, ObjectId.BounceBlock));
         
     }
     

@@ -38,8 +38,8 @@ public class Player extends GameObject{
 
     @Override
     public void tick(LinkedList<GameObject> object) {
-        x += velX;
-        y += velY;
+        
+       
         
         //Gravity will affect it if falling or jumping
         if(falling || jumping){
@@ -50,7 +50,20 @@ public class Player extends GameObject{
                 velY = MAX_SPEED;
             }
         }
-        System.out.println(Collision(object));
+        
+        
+        x += velX;
+        y += velY;
+        
+        /*List<ObjectId> touching = Collision(object);
+        if(touching.contains(ObjectId.Rail)){
+            x += velX;
+        }*/
+        Collision(object);
+        
+
+        
+        
     }
     
     //Takes care of what happens when collision happens
@@ -98,6 +111,7 @@ public class Player extends GameObject{
                     falling = false;
                     jumping = false;
                     velY = 0;
+                    x += velX;
                 } 
             }
             
@@ -106,6 +120,14 @@ public class Player extends GameObject{
                     idList.add(handler.object.get(i).getId());
                     if(tempObject.getY() < Game.HEIGHT)
                         y = tempObject.getY() - Game.HEIGHT + 100;
+                }
+            }
+            
+            if(tempObject.getId() == ObjectId.BounceBlock){
+                if(getBounds().intersects(tempObject.getBounds())){
+                    idList.add(handler.object.get(i).getId());
+                    jumping = true;
+                    velY = -17;
                 }
             }
         }
