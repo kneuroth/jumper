@@ -30,12 +30,12 @@ public class Rail extends GameObject{
     @Override
     public void render(Graphics g) {
         g.setColor(Color.green);
-        g.drawRect((int)x, (int)y, 32, 32);
+        g.drawRect((int)x, (int)y, 32, 16);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, 32, 32);
+        return new Rectangle((int)x, (int)y, 32, 16);
     }
 
 

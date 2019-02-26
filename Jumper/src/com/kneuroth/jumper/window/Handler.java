@@ -61,7 +61,7 @@ public class Handler {
             addObject(new Block(Game.WIDTH - 32, i, ObjectId.Block));
         }
         for(int i = 0; i < Game.WIDTH / 3; i+=32){
-            addObject(new Rail(Game.WIDTH / 3 + i + 32, Game.HEIGHT * 3/4 + 10, ObjectId.Rail ));
+            addObject(new Rail(Game.WIDTH / 3 + i , Game.HEIGHT * 3/4 + 10, ObjectId.Rail ));
         }
 
   

@@ -64,11 +64,11 @@ public class KeyInput extends KeyAdapter{
             
             //If this is the player
             if(tempObject.getId() == ObjectId.Player){
-                if(key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D){
-                    tempObject.setVelX(-tempObject.MAX_X_SPEED);
+                if((key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) && tempObject.getVelX() > 0){
+                    tempObject.setVelX(0);
                 }
-                if(key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A){
-                    tempObject.setVelX(tempObject.MAX_X_SPEED);
+                if((key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) && tempObject.getVelX() < 0){
+                    tempObject.setVelX(0);
                 }
                 
             }

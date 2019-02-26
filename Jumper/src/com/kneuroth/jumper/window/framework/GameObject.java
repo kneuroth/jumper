@@ -16,7 +16,7 @@ import java.util.LinkedList;
  */
 public abstract class GameObject {
     
-    protected final int MAX_X_SPEED = 7;
+    protected final int MAX_X_SPEED = 10;
     
     protected float x,y;
     protected ObjectId id;
@@ -70,7 +70,7 @@ public abstract class GameObject {
         return velY;
     }
     public void setVelX(float velX){
-        this.velX += velX;
+        this.velX = velX;
     }
     public void setVelY(float velY){
         this.velY = velY;

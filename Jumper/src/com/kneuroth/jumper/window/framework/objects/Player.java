@@ -52,6 +52,7 @@ public class Player extends GameObject{
         }
         
         
+        
         x += velX;
         y += velY;
         
@@ -111,7 +112,7 @@ public class Player extends GameObject{
                     falling = false;
                     jumping = false;
                     velY = 0;
-                    x += velX;
+                    x += velX/2;
                 } 
             }
             
