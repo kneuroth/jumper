@@ -25,6 +25,8 @@ public class Player extends GameObject{
     
     private float width = 40, height = 40; //48 96
     private float gravity = 0.7f;
+    private float frictionToRight = -0.3f;
+    private float frictionToLeft = 0.3f;
     
     private final float MAX_SPEED = 10;
     
@@ -50,9 +52,15 @@ public class Player extends GameObject{
                 velY = MAX_SPEED;
             }
         }
+        /*if(velX > 0)
+            velX += frictionToRight;
+        
+        if(velX < 0)
+            velX += frictionToLeft;*/
         
         
-        
+
+        System.out.println(velX);
         x += velX;
         y += velY;
         
@@ -113,6 +121,7 @@ public class Player extends GameObject{
                     jumping = false;
                     velY = 0;
                     x += velX/2;
+                    
                 } 
             }
             
