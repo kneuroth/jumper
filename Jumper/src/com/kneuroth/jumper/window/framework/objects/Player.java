@@ -12,7 +12,9 @@ import com.kneuroth.jumper.window.framework.ObjectId;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.List;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -48,22 +50,28 @@ public class Player extends GameObject{
                 velY = MAX_SPEED;
             }
         }
-        Collision(object);
-        System.out.println(velX);
+        System.out.println(Collision(object));
     }
     
     //Takes care of what happens when collision happens
-    private void Collision(LinkedList<GameObject> object){
+    private List<ObjectId> Collision(LinkedList<GameObject> object){
+        
+        List<ObjectId> idList;
+        idList = new ArrayList<>();
+        
         for(int i = 0; i < handler.object.size(); i++){
+            
             GameObject tempObject = handler.object.get(i);
             
             if(tempObject.getId() == ObjectId.Block){
                 if(getBoundsTop().intersects(tempObject.getBounds())){
+                    idList.add(handler.object.get(i).getId());
                     y = tempObject.getY()+ 32;//removing this makes slider block
                     velY = 0;
                 }
             
                 if(getBounds().intersects(tempObject.getBounds())){
+                    idList.add(handler.object.get(i).getId());
                     y = tempObject.getY() - height;
                     velY = 0;
                     falling = false;
@@ -73,16 +81,19 @@ public class Player extends GameObject{
                 }
                 
                 if(getBoundsRight().intersects(tempObject.getBounds())){
+                    idList.add(handler.object.get(i).getId());
                     x = tempObject.getX() - 42;
                     System.out.println(tempObject.getX());
                 }
                 if(getBoundsLeft().intersects(tempObject.getBounds())){
+                    idList.add(handler.object.get(i).getId());
                     x = tempObject.getX() + 35;
                 }
             }
             
             if(tempObject.getId() == ObjectId.Rail){
                 if(getBoundsTop().intersects(tempObject.getBounds())){
+                    idList.add(handler.object.get(i).getId());
                     y = tempObject.getY();//removing this makes slider block
                     falling = false;
                     jumping = false;
@@ -92,11 +103,14 @@ public class Player extends GameObject{
             
             if(tempObject.getId() == ObjectId.Portal){
                 if(getBounds().intersects(tempObject.getBounds())){
+                    idList.add(handler.object.get(i).getId());
                     if(tempObject.getY() < Game.HEIGHT)
                         y = tempObject.getY() - Game.HEIGHT + 100;
                 }
             }
         }
+        
+        return idList;
     }
 
     @Override
