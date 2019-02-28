@@ -30,12 +30,12 @@ public class Player extends GameObject{
     
     private final float MAX_SPEED = 10;
     
-    private Handler handler;
+
    
     
     public Player(float x, float y, Handler handler, ObjectId id){
         super(x, y, id);
-        this.handler = handler;
+        super.handler = handler;
     }
 
     @Override
@@ -52,11 +52,11 @@ public class Player extends GameObject{
                 velY = MAX_SPEED;
             }
         }
-        /*if(velX > 0)
+        if(velX > MAX_X_SPEED)
             velX += frictionToRight;
         
-        if(velX < 0)
-            velX += frictionToLeft;*/
+        if(velX < -MAX_X_SPEED)
+            velX += frictionToLeft;
         
         
 
@@ -75,8 +75,8 @@ public class Player extends GameObject{
         
     }
     
-    //Takes care of what happens when collision happens
-    private List<ObjectId> Collision(LinkedList<GameObject> object){
+    /*//Takes care of what happens when collision happens
+    public List<ObjectId> Collision(LinkedList<GameObject> object){
         
         List<ObjectId> idList;
         idList = new ArrayList<>();
@@ -117,10 +117,10 @@ public class Player extends GameObject{
                 if(getBoundsTop().intersects(tempObject.getBounds())){
                     idList.add(handler.object.get(i).getId());
                     y = tempObject.getY();//removing this makes slider block
-                    falling = false;
+                    //falling = false;
                     jumping = false;
                     velY = 0;
-                    x += velX/2;
+                    //x += velX/2;
                     
                 } 
             }
@@ -140,11 +140,20 @@ public class Player extends GameObject{
                     velY = -17;
                 }
             }
+            if(tempObject.getId() == ObjectId.Platform){
+                if(getBounds().intersects(tempObject.getBounds()) && velY >= 0){
+                    idList.add(handler.object.get(i).getId());
+                    y = tempObject.getY() - height ;//removing this makes slider block
+                    falling = false;
+                    jumping = false;
+                    velY = 0;
+                }
+            }
         }
         
         return idList;
     }
-
+*/
     @Override
     public void render(Graphics g) {
         
@@ -162,7 +171,7 @@ public class Player extends GameObject{
         */
     }
 
-    @Override
+    /*@Override
     public Rectangle getBounds() {
         return new Rectangle((int) ((int)x + (width/2) - (width/2)/2), (int) ((int)y + (height/2)), (int)width/2, (int)height/2);
     }
@@ -174,6 +183,16 @@ public class Player extends GameObject{
     }
     public Rectangle getBoundsLeft() {
         return new Rectangle((int)x, (int)y + 5, (int)5, (int)height - 10);
+    }*/
+
+    @Override
+    public float getHeight() {
+        return height;
+    }
+
+    @Override
+    public float getWidth() {
+        return width;
     }
 
     

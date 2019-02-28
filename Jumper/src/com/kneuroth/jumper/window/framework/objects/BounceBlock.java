@@ -18,6 +18,8 @@ import java.util.LinkedList;
  */
 public class BounceBlock extends GameObject{
     
+    private float height = 32, width = 32;
+    
     public BounceBlock(float x, float y, ObjectId id) {
         super(x, y, id);
     }
@@ -35,6 +37,16 @@ public class BounceBlock extends GameObject{
     @Override
     public Rectangle getBounds() {
         return new Rectangle((int)x, (int)y, 32, 32);
+    }
+
+    @Override
+    public float getHeight() {
+        return height;
+    }
+
+    @Override
+    public float getWidth() {
+        return width;
     }
     
 }

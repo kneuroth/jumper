@@ -19,6 +19,8 @@ import java.util.LinkedList;
  */
 public class Portal extends GameObject {
     
+   private float height = 32, width = 32;
+    
     
     public Portal(float x, float y, ObjectId id) {
         super(x, y, id);
@@ -33,12 +35,22 @@ public class Portal extends GameObject {
     public void render(Graphics g) {
         g.setColor(Color.blue);
         g.drawRect((int)x, (int)y, 32, 32);
-        g.drawRect((int)x, (int)y - Game.HEIGHT + 100, 32, 32);
+        g.drawRect((int)x, (int)y - Game.HEIGHT + 100, (int)height, (int)width);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, 32, 32);
+        return new Rectangle((int)x, (int)y, (int)height, (int)width);
+    }
+
+    @Override
+    public float getHeight() {
+        return height;
+    }
+
+    @Override
+    public float getWidth() {
+       return width;
     }
 
 

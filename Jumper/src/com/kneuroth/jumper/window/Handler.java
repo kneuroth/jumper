@@ -54,6 +54,11 @@ public class Handler {
         for(int xx = 0; xx < Game.WIDTH + 32; xx+=32){
             addObject(new Block( xx, Game.HEIGHT - 32, ObjectId.Block));
         }
+        
+        for(int xx = 0; xx < Game.WIDTH + 32; xx+=32){
+            addObject(new Block( xx, Game.HEIGHT - 200, ObjectId.Platform));
+        }
+        
         for(int i = 0; i < Game.HEIGHT + 32; i += 32){
             addObject(new Block(0, i, ObjectId.Block));
         }
@@ -67,7 +72,7 @@ public class Handler {
   
         addObject(new Portal(50, Game.HEIGHT - 100, ObjectId.Portal));
         
-        addObject(new BounceBlock(100, Game.HEIGHT - 100, ObjectId.BounceBlock));
+        addObject(new BounceBlock(150, Game.HEIGHT - 100, ObjectId.BounceBlock));
         
     }
     

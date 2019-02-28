@@ -11,37 +11,33 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  *
  * @author Kelly
  */
-public class Block extends GameObject{
+public class Platform extends GameObject {
     
     private float height = 32, width = 32;
-    
-    public Block(float x, float y, ObjectId id) {
+
+    public Platform(float x, float y, ObjectId id) {
         super(x, y, id);
     }
- 
+
     @Override
     public void tick(LinkedList<GameObject> object) {
-       
     }
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.yellow);
+        g.setColor(Color.red);
         g.drawRect((int)x, (int)y, (int)height, (int)width);
     }
-    
+
     @Override
-    public Rectangle getBounds(){
+    public Rectangle getBounds() {
         return new Rectangle((int)x, (int)y, (int)height, (int)width);
     }
-
- 
 
     @Override
     public float getHeight() {
@@ -52,8 +48,5 @@ public class Block extends GameObject{
     public float getWidth() {
         return width;
     }
-
-  
-}
     
-
+}

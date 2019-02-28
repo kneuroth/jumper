@@ -18,6 +18,8 @@ import java.util.LinkedList;
  */
 public class Rail extends GameObject{
     
+    private float height = 32, width = 16;
+    
     public Rail(float x, float y, ObjectId id) {
         super(x, y, id);
     }
@@ -30,12 +32,22 @@ public class Rail extends GameObject{
     @Override
     public void render(Graphics g) {
         g.setColor(Color.green);
-        g.drawRect((int)x, (int)y, 32, 16);
+        g.drawRect((int)x, (int)y, (int)height, (int)width);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, 32, 16);
+        return new Rectangle((int)x, (int)y, (int)height, (int)width);
+    }
+
+    @Override
+    public float getHeight() {
+        return height;
+    }
+
+    @Override
+    public float getWidth() {
+        return width;
     }
 
 
