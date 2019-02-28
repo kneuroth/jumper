@@ -46,7 +46,12 @@ public class KeyInput extends KeyAdapter{
                     tempObject.setJumping(true);
                     tempObject.setVelY(-13);
                 }
-               
+                if(key == KeyEvent.VK_DOWN){ //bit of a work around. switch between crouch height and regular height
+                    float temp = tempObject.getCrouchHeight();
+                    tempObject.setCrouchHeight(tempObject.getHeight());
+                    tempObject.setHeight(temp);
+                }
+                   
             }
         }
         
@@ -70,6 +75,13 @@ public class KeyInput extends KeyAdapter{
                 }
                 if((key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) && tempObject.getVelX() < 0){
                     tempObject.setVelX(0);
+                }
+                
+                
+                if(key == KeyEvent.VK_DOWN){
+                    float temp = tempObject.getCrouchHeight();
+                    tempObject.setCrouchHeight(tempObject.getHeight());
+                    tempObject.setHeight(temp);
                 }
                 
             }

@@ -41,16 +41,23 @@ public abstract class GameObject {
     
     public abstract void render(Graphics g);
     
-    //public abstract Rectangle getBounds();
-    
     public abstract float getHeight();
+    
+    public abstract void setHeight(float height);
+    
+    public abstract float getCrouchHeight();
+    
+    public abstract void setCrouchHeight(float crouchHeight);
     
     public abstract float getWidth();
     
-    public List<ObjectId> Collision(LinkedList<GameObject> object){
+    public abstract void setWidth(float width);
+    
+    public List<ObjectId> Collision(){
                 
         List<ObjectId> idList;
         idList = new ArrayList<>();
+        
         
         for(int i = 0; i < handler.object.size(); i++){
             
@@ -76,7 +83,7 @@ public abstract class GameObject {
                 if(getBoundsRight().intersects(tempObject.getBounds())){
                     idList.add(handler.object.get(i).getId());
                     x = tempObject.getX() - 42;
-                    System.out.println(tempObject.getX());
+                    //System.out.println(tempObject.getX());
                 }
                 if(getBoundsLeft().intersects(tempObject.getBounds())){
                     idList.add(handler.object.get(i).getId());
@@ -121,6 +128,7 @@ public abstract class GameObject {
                 }
             }
         }
+        System.out.println(idList.contains(ObjectId.Platform));
         
         return idList;
     }

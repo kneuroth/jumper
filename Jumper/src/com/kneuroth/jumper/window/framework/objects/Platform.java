@@ -18,7 +18,7 @@ import java.util.LinkedList;
  */
 public class Platform extends GameObject {
     
-    private float height = 32, width = 32;
+    private float height = 32, width = 32, crouchHeight = height/2;;
 
     public Platform(float x, float y, ObjectId id) {
         super(x, y, id);
@@ -47,6 +47,26 @@ public class Platform extends GameObject {
     @Override
     public float getWidth() {
         return width;
+    }
+
+    @Override
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    @Override
+    public void setWidth(float width) {
+        this.width = width;
+    }
+
+    @Override
+    public float getCrouchHeight() {
+        return crouchHeight;
+    }
+
+    @Override
+    public void setCrouchHeight(float crouchHeight) {
+        this.crouchHeight = crouchHeight;
     }
     
 }

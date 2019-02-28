@@ -23,7 +23,7 @@ import java.util.LinkedList;
  */
 public class Player extends GameObject{
     
-    private float width = 40, height = 40; //48 96
+    private float width = 40, height = 40, crouchHeight = height/2;; //48 96
     private float gravity = 0.7f;
     private float frictionToRight = -0.3f;
     private float frictionToLeft = 0.3f;
@@ -68,7 +68,7 @@ public class Player extends GameObject{
         if(touching.contains(ObjectId.Rail)){
             x += velX;
         }*/
-        Collision(object);
+        Collision();
         
 
         
@@ -193,6 +193,26 @@ public class Player extends GameObject{
     @Override
     public float getWidth() {
         return width;
+    }
+
+    @Override
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    @Override
+    public void setWidth(float width) {
+        this.width = width;
+    }
+
+    @Override
+    public float getCrouchHeight() {
+        return crouchHeight;
+    }
+
+    @Override
+    public void setCrouchHeight(float crouchHeight) {
+        this.crouchHeight = crouchHeight;
     }
 
     
