@@ -31,6 +31,9 @@ public abstract class GameObject {
     protected boolean falling = true;
     protected boolean jumping = false;
     
+    protected boolean onWall = false;
+    
+    
     public GameObject(float x, float y, ObjectId id){
         this.x = x;
         this.y = y;
@@ -83,18 +86,21 @@ public abstract class GameObject {
                 if(getBoundsRight().intersects(tempObject.getBounds())){
                     idList.add(handler.object.get(i).getId());
                     x = tempObject.getX() - 42;
-                    //System.out.println(tempObject.getX());
+                    velY = 0;
+                    onWall = true;
                 }
                 if(getBoundsLeft().intersects(tempObject.getBounds())){
                     idList.add(handler.object.get(i).getId());
                     x = tempObject.getX() + 35;
+                    velY = 0;
+                    onWall = true;
                 }
             }
             
             if(tempObject.getId() == ObjectId.Rail){
                 if(getBoundsTop().intersects(tempObject.getBounds())){
                     idList.add(handler.object.get(i).getId());
-                    y = tempObject.getY();//removing this makes slider block
+                    y = tempObject.getY();
                     //falling = false;
                     jumping = false;
                     velY = 0;
@@ -128,7 +134,7 @@ public abstract class GameObject {
                 }
             }
         }
-        System.out.println(idList.contains(ObjectId.Platform));
+        
         
         return idList;
     }
@@ -145,6 +151,7 @@ public abstract class GameObject {
     public void setJumping(boolean j){
         this.jumping = j;
     }
+    
     
     public float getX(){
         return x;

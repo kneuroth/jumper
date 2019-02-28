@@ -11,6 +11,7 @@ import static com.kneuroth.jumper.window.framework.ObjectId.BounceBlock;
 import static com.kneuroth.jumper.window.framework.ObjectId.Portal;
 import com.kneuroth.jumper.window.framework.objects.Block;
 import com.kneuroth.jumper.window.framework.objects.BounceBlock;
+import com.kneuroth.jumper.window.framework.objects.Platform;
 import com.kneuroth.jumper.window.framework.objects.Portal;
 import com.kneuroth.jumper.window.framework.objects.Rail;
 import java.awt.Graphics;
@@ -55,12 +56,15 @@ public class Handler {
             addObject(new Block( xx, Game.HEIGHT - 32, ObjectId.Block));
         }
         
-        for(int xx = 0; xx < Game.WIDTH + 32; xx+=32){
-            addObject(new Block( xx, Game.HEIGHT - 200, ObjectId.Platform));
+        for(int xx = 150; xx < Game.WIDTH + 32; xx+=32){
+            addObject(new Platform( xx, Game.HEIGHT - 200, ObjectId.Platform));
         }
         
         for(int i = 0; i < Game.HEIGHT + 32; i += 32){
             addObject(new Block(0, i, ObjectId.Block));
+        }
+        for(int i = 0; i < Game.HEIGHT + 32; i += 32){
+            addObject(new Block(300, i, ObjectId.Block));
         }
         for(int i = 0; i < Game.HEIGHT + 32; i += 32){
             addObject(new Block(Game.WIDTH - 32, i, ObjectId.Block));

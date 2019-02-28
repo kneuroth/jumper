@@ -52,108 +52,22 @@ public class Player extends GameObject{
                 velY = MAX_SPEED;
             }
         }
-        if(velX > MAX_X_SPEED)
-            velX += frictionToRight;
-        
-        if(velX < -MAX_X_SPEED)
-            velX += frictionToLeft;
-        
-        
-
-        System.out.println(velX);
         x += velX;
         y += velY;
+        
+        if(onWall == true){
+            jumping = false;
+            falling = false;
+            onWall = false;
+        }
         
         /*List<ObjectId> touching = Collision(object);
         if(touching.contains(ObjectId.Rail)){
             x += velX;
         }*/
-        Collision();
-        
-
-        
-        
+        System.out.println(Collision());
     }
     
-    /*//Takes care of what happens when collision happens
-    public List<ObjectId> Collision(LinkedList<GameObject> object){
-        
-        List<ObjectId> idList;
-        idList = new ArrayList<>();
-        
-        for(int i = 0; i < handler.object.size(); i++){
-            
-            GameObject tempObject = handler.object.get(i);
-            
-            if(tempObject.getId() == ObjectId.Block){
-                if(getBoundsTop().intersects(tempObject.getBounds())){
-                    idList.add(handler.object.get(i).getId());
-                    y = tempObject.getY()+ 32;//removing this makes slider block
-                    velY = 0;
-                }
-            
-                if(getBounds().intersects(tempObject.getBounds())){
-                    idList.add(handler.object.get(i).getId());
-                    y = tempObject.getY() - height;
-                    velY = 0;
-                    falling = false;
-                    jumping = false;
-                }else{
-                    falling = true;
-                }
-                
-                if(getBoundsRight().intersects(tempObject.getBounds())){
-                    idList.add(handler.object.get(i).getId());
-                    x = tempObject.getX() - 42;
-                    System.out.println(tempObject.getX());
-                }
-                if(getBoundsLeft().intersects(tempObject.getBounds())){
-                    idList.add(handler.object.get(i).getId());
-                    x = tempObject.getX() + 35;
-                }
-            }
-            
-            if(tempObject.getId() == ObjectId.Rail){
-                if(getBoundsTop().intersects(tempObject.getBounds())){
-                    idList.add(handler.object.get(i).getId());
-                    y = tempObject.getY();//removing this makes slider block
-                    //falling = false;
-                    jumping = false;
-                    velY = 0;
-                    //x += velX/2;
-                    
-                } 
-            }
-            
-            if(tempObject.getId() == ObjectId.Portal){
-                if(getBounds().intersects(tempObject.getBounds())){
-                    idList.add(handler.object.get(i).getId());
-                    if(tempObject.getY() < Game.HEIGHT)
-                        y = tempObject.getY() - Game.HEIGHT + 100;
-                }
-            }
-            
-            if(tempObject.getId() == ObjectId.BounceBlock){
-                if(getBounds().intersects(tempObject.getBounds())){
-                    idList.add(handler.object.get(i).getId());
-                    jumping = true;
-                    velY = -17;
-                }
-            }
-            if(tempObject.getId() == ObjectId.Platform){
-                if(getBounds().intersects(tempObject.getBounds()) && velY >= 0){
-                    idList.add(handler.object.get(i).getId());
-                    y = tempObject.getY() - height ;//removing this makes slider block
-                    falling = false;
-                    jumping = false;
-                    velY = 0;
-                }
-            }
-        }
-        
-        return idList;
-    }
-*/
     @Override
     public void render(Graphics g) {
         

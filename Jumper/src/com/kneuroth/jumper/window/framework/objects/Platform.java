@@ -30,7 +30,7 @@ public class Platform extends GameObject {
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.red);
+        g.setColor(Color.white);
         g.drawRect((int)x, (int)y, (int)height, (int)width);
     }
 
