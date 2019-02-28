@@ -63,7 +63,7 @@ public class Handler {
         for(int i = 0; i < Game.HEIGHT + 32; i += 32){
             addObject(new Block(0, i, ObjectId.Block));
         }
-        for(int i = 0; i < Game.HEIGHT + 32; i += 32){
+        for(int i = 0; i < Game.HEIGHT -270; i += 32){
             addObject(new Block(300, i, ObjectId.Block));
         }
         for(int i = 0; i < Game.HEIGHT + 32; i += 32){
