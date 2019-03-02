@@ -121,7 +121,7 @@ public abstract class GameObject {
                 if(getBounds().intersects(tempObject.getBounds())){
                     idList.add(handler.object.get(i).getId());
                     jumping = true;
-                    velY = -2*velY;
+                    velY = -13;
                 }
             }
             if(tempObject.getId() == ObjectId.Platform){

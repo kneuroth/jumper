@@ -8,12 +8,16 @@ package com.kneuroth.jumper.window;
 import com.kneuroth.jumper.window.framework.KeyInput;
 import com.kneuroth.jumper.window.framework.ObjectId;
 import com.kneuroth.jumper.window.framework.objects.Block;
+import com.kneuroth.jumper.window.framework.objects.BounceBlock;
+import com.kneuroth.jumper.window.framework.objects.Platform;
 import com.kneuroth.jumper.window.framework.objects.Player;
+import com.kneuroth.jumper.window.framework.objects.Rail;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 import static java.lang.Math.random;
 
 /**
@@ -29,18 +33,26 @@ public class Game extends Canvas implements Runnable {
     Handler handler;
     Camera cam;
     
+    private BufferedImage level = null;
+    
     public static int WIDTH, HEIGHT;
     
     private void init(){
         WIDTH = getWidth();
         HEIGHT = getHeight();
+        
+        BufferedImageLoader loader = new BufferedImageLoader();
+        level = loader.loadImage("/level.png"); //loading level
+        
         handler = new Handler();
         
         cam = new Camera(0,0);
         
-        handler.addObject(new Player(100, 450, handler, ObjectId.Player ));
+        LoadImageLevel(level);
         
-        handler.createLevel();
+        //handler.addObject(new Player(100, 450, handler, ObjectId.Player ));
+        
+        //handler.createLevel();
         
         this.addKeyListener(new KeyInput(handler));
         
@@ -126,6 +138,33 @@ public class Game extends Canvas implements Runnable {
         g.dispose();
         bs.show();
         
+    }
+    
+    private void LoadImageLevel(BufferedImage image){
+        int w = image.getWidth();
+        int h = image.getHeight();
+        
+        //System.out.println("Width: "  + w + " Height: " + h);
+        
+        for(int xx = 0; xx < h; xx++){
+            for(int yy = 0; yy < w; yy++){
+                int pixel = image.getRGB(xx, yy);
+                int red = (pixel >> 16) & 0xff;
+                int green = (pixel >> 8) & 0xff;
+                int blue = (pixel) & 0xff;
+                
+                //Black - Block
+                if(red == 0 && green == 0 && blue == 0)handler.addObject(new Block(xx * 32, yy * 32, ObjectId.Block));
+                //Brown - Platform
+                if(red == 185 && green == 122 && blue == 87)handler.addObject(new Platform(xx*32, yy*32, ObjectId.Platform));
+                //Purple - Bouncy Block
+                if(red == 163 && green == 73 && blue == 164)handler.addObject(new BounceBlock(xx*32, yy*32, ObjectId.BounceBlock));
+                //Green - Rail
+                if(red == 34 && green == 177 && blue == 76)handler.addObject(new Rail(xx*32, yy*32, ObjectId.Rail));
+                //Blue - Player
+                if(red == 63 && green == 72 && blue == 204)handler.addObject(new Player(xx * 32, yy*32, handler, ObjectId.Player));
+            }
+        }
     }
     
     public static void main(String args[]){
