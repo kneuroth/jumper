@@ -12,6 +12,7 @@ import com.kneuroth.jumper.window.framework.objects.Player;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import static java.lang.Math.random;
 
@@ -26,6 +27,7 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     
     Handler handler;
+    Camera cam;
     
     public static int WIDTH, HEIGHT;
     
@@ -33,6 +35,8 @@ public class Game extends Canvas implements Runnable {
         WIDTH = getWidth();
         HEIGHT = getHeight();
         handler = new Handler();
+        
+        cam = new Camera(0,0);
         
         handler.addObject(new Player(100, 450, handler, ObjectId.Player ));
         
@@ -85,6 +89,12 @@ public class Game extends Canvas implements Runnable {
     //updates ALL of the objects because of handler
     private void tick(){
         handler.tick();
+        //tick in camera only for the player game object in handler
+        for(int i = 0; i < handler.object.size(); i++){
+            if(handler.object.get(i).getId() == ObjectId.Player){
+                cam.tick(handler.object.get(i));
+            }
+        }
     }
     
     //draw graphics
@@ -98,12 +108,19 @@ public class Game extends Canvas implements Runnable {
         }
         
         Graphics g = bs.getDrawGraphics();
+        Graphics2D g2d = (Graphics2D)g;
         /*-----------------DRAW HERE----------------*/
+        
+        
         
         g.setColor(Color.black);
         g.fillRect(0,0,getWidth(), getHeight());
         
-        handler.render(g);
+        g2d.translate(cam.getX(), cam.getY());//anything between here will be affected by camera
+        
+            handler.render(g);
+        
+        g2d.translate(-cam.getX(), -cam.getY());
         
         /*---------------------------------*/
         g.dispose();
