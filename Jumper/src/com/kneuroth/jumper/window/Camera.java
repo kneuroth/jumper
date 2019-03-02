@@ -23,12 +23,13 @@ public class Camera {
     }
     
  
-    
+
  
     
     public void tick(GameObject player){
-         x = -player.getX() + Game.WIDTH/2;
-         y = -player.getY() + Game.HEIGHT/2;
+         x = -player.getX() + Game.WIDTH/2 + player.getVelX();
+         y = -player.getY() + Game.HEIGHT/2 + player.getVelY();
+         
         
     }
     
