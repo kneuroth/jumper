@@ -85,7 +85,7 @@ public abstract class GameObject {
                 
                 if(getBoundsRight().intersects(tempObject.getBounds())){
                     idList.add(handler.object.get(i).getId());
-                    x = tempObject.getX() - 42;
+                    x = tempObject.getX() - 32;
                     velY = 0;
                     onWall = true;
                 }
@@ -121,7 +121,7 @@ public abstract class GameObject {
                 if(getBounds().intersects(tempObject.getBounds())){
                     idList.add(handler.object.get(i).getId());
                     jumping = true;
-                    velY = -17;
+                    velY = -2*velY;
                 }
             }
             if(tempObject.getId() == ObjectId.Platform){

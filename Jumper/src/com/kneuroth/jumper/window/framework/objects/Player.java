@@ -23,7 +23,7 @@ import java.util.LinkedList;
  */
 public class Player extends GameObject{
     
-    private float width = 40, height = 40, crouchHeight = height/2;; //48 96
+    private float width = 30, height = 40, crouchHeight = height/2;; //48 96
     private float gravity = 0.7f;
     private float frictionToRight = -0.3f;
     private float frictionToLeft = 0.3f;
