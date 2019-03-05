@@ -20,7 +20,7 @@ import java.util.List;
  */
 public abstract class GameObject {
     
-    protected final int MAX_X_SPEED = 10;
+    protected final int MAX_X_SPEED = 9;
     
     protected Handler handler;
     
@@ -109,10 +109,10 @@ public abstract class GameObject {
         return new Rectangle((int) ((int)x + (getWidth()/2) - (getWidth()/2)/2), (int)y, (int)getWidth()/2, (int)getHeight()/2);
     }
     public Rectangle getBoundsRight() {
-        return new Rectangle((int) ((int)x + getWidth() - 5), (int)y + 5, (int)5, (int)getHeight() - 10);
+        return new Rectangle((int) ((int)x + getWidth() -10), (int)y + 5, (int)10, (int)getHeight() - 10);
     }
     public Rectangle getBoundsLeft() {
-        return new Rectangle((int)x, (int)y + 5, (int)5, (int)getHeight() - 10);
+        return new Rectangle((int)x, (int)y + 5, (int)10, (int)getHeight() - 10);
     }
     
 }

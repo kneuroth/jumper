@@ -23,7 +23,7 @@ import java.util.LinkedList;
  */
 public class Player extends GameObject{
     
-    private float width = 30, height = 40, crouchHeight = height/2;; //48 96
+    private float width = 40, height = 60, crouchHeight = height/2; //48 96
     private float gravity = 0.7f;
     private float frictionToRight = -0.3f;
     private float frictionToLeft = 0.3f;
@@ -76,13 +76,14 @@ public class Player extends GameObject{
         g.setColor(Color.blue);
         g.fillRect((int)x, (int)y, (int)width, (int)height);
         
+        /*
         Graphics2D g2d = (Graphics2D) g;
         g.setColor(Color.red);
         g2d.draw(getBounds());
         g2d.draw(getBoundsRight());
         g2d.draw(getBoundsLeft());
         g2d.draw(getBoundsTop());
-        
+        */
     }
     
     public List<ObjectId> Collision(){
@@ -112,26 +113,28 @@ public class Player extends GameObject{
                 }else{
                     falling = true;
                 }
-                
                 if(getBoundsRight().intersects(tempObject.getBounds())){
-                    idList.add(handler.object.get(i).getId());
+                    //System.out.println("YES");
+                    //idList.add(handler.object.get(i).getId());
                     //x = tempObject.getX() - 32;
-                    x = tempObject.getX() - 32;
+                    x = tempObject.getX() - 41;
                     //y = tempObject.getY();
-                    velY = 0;
+                    //x = tempObject.getX() - 36;
+                    velX = 0;
+                    //velY = 0;
                     onWall = true;
                 }
                 
                 if(getBoundsLeft().intersects(tempObject.getBounds())){
-                    idList.add(handler.object.get(i).getId());
-                    x = tempObject.getX() + 36;
+                    //idList.add(handler.object.get(i).getId());
+                    x = tempObject.getX() + 33;
                     //y = tempObject.getY();
                     //System.out.println("Left");
-                    //velX = 0;
+                    velX = 0;
                     //x = tempObject.getX();
                     
                     
-                    velY = 0;
+                    //velY = 0;
                     onWall = true;
                 }
             }
