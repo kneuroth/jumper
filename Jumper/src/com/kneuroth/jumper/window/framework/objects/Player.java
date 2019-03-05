@@ -143,7 +143,7 @@ public class Player extends GameObject{
                 if(getBoundsTop().intersects(tempObject.getBounds())){
                     idList.add(handler.object.get(i).getId());
                     y = tempObject.getY();
-                    //falling = false;
+                    falling = false;
                     jumping = false;
                     velY = 0;
                     x += velX/2;
