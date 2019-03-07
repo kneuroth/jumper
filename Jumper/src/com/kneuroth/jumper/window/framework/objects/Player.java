@@ -42,6 +42,12 @@ public class Player extends GameObject{
     public void tick(LinkedList<GameObject> object) {
         
        
+        if(velX > MAX_X_SPEED * 1.5){
+            velX--;
+        }
+        if(velX < MAX_X_SPEED * -1.5){
+            velX++;
+        }
         
         //Gravity will affect it if falling or jumping
         if(falling || jumping){
@@ -146,7 +152,8 @@ public class Player extends GameObject{
                     falling = false;
                     jumping = false;
                     velY = 0;
-                    x += velX/2;
+                    //x += velX/2;
+                    velX += velX/20;
                     
                 } 
             }

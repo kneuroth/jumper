@@ -51,6 +51,7 @@ public abstract class GameObject {
     public abstract float getCrouchHeight();
     
     public abstract void setCrouchHeight(float crouchHeight);
+   
     
     public abstract float getWidth();
     
@@ -92,6 +93,7 @@ public abstract class GameObject {
         return velY;
     }
     public void setVelX(float velX){
+        //if(velX % MAX_X_SPEED != 0)this.velX = 0;
         this.velX = velX;
     }
     public void setVelY(float velY){
