@@ -25,8 +25,7 @@ public class Player extends GameObject{
     
     private float width = 40, height = 60, crouchHeight = height/2; //48 96
     private float gravity = 0.7f;
-    private float frictionToRight = -0.3f;
-    private float frictionToLeft = 0.3f;
+
     
     private final float MAX_SPEED = 10;
     
