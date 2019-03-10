@@ -151,6 +151,17 @@ public abstract class GameObject {
                                 jumping = false;
                                 velY = 0;
                             }       break;
+                        case Box:
+                        if(getBoundsRight().intersects(tempObject.getBounds()));
+                        else if(getBoundsLeft().intersects(tempObject.getBounds()));
+                        else if(getBounds().intersects(tempObject.getBounds()) && velY >= 0){
+                            idList.add(handler.object.get(i).getId());
+                            y = tempObject.getY() - getHeight() ;//removing this makes slider block
+                            falling = false;
+                            jumping = false;
+                            velY = 0;
+                        }       break;
+                            
                         default:
                             break;
                     }
@@ -214,6 +225,23 @@ public abstract class GameObject {
                                 jumping = false;
                                 velY = 0;
                             }       break;
+                        case Player:
+                            if(getBoundsLeft().intersects(tempObject.getBounds()) && tempObject.getVelX() > 0){
+                                velX = tempObject.getVelX();
+                            }
+                            else if(getBoundsRight().intersects(tempObject.getBounds()) && tempObject.getVelX() < 0){
+                                velX = tempObject.getVelX();
+                            }       break;
+                        case Box:
+                        if(getBoundsRight().intersects(tempObject.getBounds()));
+                        else if(getBoundsLeft().intersects(tempObject.getBounds()));
+                        else if(getBounds().intersects(tempObject.getBounds()) && velY >= 0){
+                            idList.add(handler.object.get(i).getId());
+                            y = tempObject.getY() - getHeight() ;//removing this makes slider block
+                            falling = false;
+                            jumping = false;
+                            velY = 0;
+                        }       break;
                         default:
                             break;
                     }

@@ -33,6 +33,8 @@ public class Box extends GameObject {
     @Override
     public void tick(LinkedList<GameObject> object) {
         
+        
+        
         //Gravity will affect it if falling or jumping
         if(falling || jumping){
             velY += gravity;
@@ -43,10 +45,15 @@ public class Box extends GameObject {
             }
         }
         
+        
         x += velX;
         y += velY;
         
+        velX = 0;
+        
         Collision();
+        
+        
         
     }
 
