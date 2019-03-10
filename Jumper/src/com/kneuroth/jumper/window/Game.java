@@ -166,7 +166,7 @@ public class Game extends Canvas implements Runnable {
                 //Blue - Player
                 if(red == 63 && green == 72 && blue == 204)handler.addObject(new Player(xx * 32, yy*32, handler, ObjectId.Player));
                 //Orange - Box
-                if(red == 255 && green == 127 && blue == 39)handler.addObject(new Box(xx * 32, yy*32, ObjectId.Box));
+                if(red == 255 && green == 127 && blue == 39)handler.addObject(new Box(xx * 32, yy*32, handler, ObjectId.Box));
             }
         }
     }

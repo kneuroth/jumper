@@ -5,6 +5,7 @@
  */
 package com.kneuroth.jumper.window.framework.objects;
 
+import com.kneuroth.jumper.window.Handler;
 import com.kneuroth.jumper.window.framework.GameObject;
 import com.kneuroth.jumper.window.framework.ObjectId;
 import java.awt.Color;
@@ -24,8 +25,9 @@ public class Box extends GameObject {
     
     private final float MAX_SPEED = 10;
 
-    public Box(float x, float y, ObjectId id) {
-        super(x, y, id);
+    public Box(float x, float y, Handler handler, ObjectId id) {
+        super(x, y,  id);
+        this.handler = handler;
     }
 
     @Override
@@ -44,7 +46,7 @@ public class Box extends GameObject {
         x += velX;
         y += velY;
         
-        //Collision();
+        Collision();
         
     }
 
