@@ -16,6 +16,7 @@ public enum ObjectId {
     Rail(),
     Portal(),
     BounceBlock(),
-    Platform();
+    Platform(),
+    Box();
     
 }

@@ -12,6 +12,7 @@ import com.kneuroth.jumper.window.framework.objects.BounceBlock;
 import com.kneuroth.jumper.window.framework.objects.Platform;
 import com.kneuroth.jumper.window.framework.objects.Player;
 import com.kneuroth.jumper.window.framework.objects.Rail;
+import com.kneuroth.jumper.window.framework.objects.Box;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -19,6 +20,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import static java.lang.Math.random;
+
 
 /**
  *
@@ -163,6 +165,8 @@ public class Game extends Canvas implements Runnable {
                 if(red == 34 && green == 177 && blue == 76)handler.addObject(new Rail(xx*32, yy*32, ObjectId.Rail));
                 //Blue - Player
                 if(red == 63 && green == 72 && blue == 204)handler.addObject(new Player(xx * 32, yy*32, handler, ObjectId.Player));
+                //Orange - Box
+                if(red == 255 && green == 127 && blue == 39)handler.addObject(new Box(xx * 32, yy*32, ObjectId.Box));
             }
         }
     }
