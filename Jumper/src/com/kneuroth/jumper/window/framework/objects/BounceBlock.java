@@ -68,5 +68,6 @@ public class BounceBlock extends GameObject{
     public void setCrouchHeight(float crouchHeight) {
         this.crouchHeight = crouchHeight;
     }
+
     
 }

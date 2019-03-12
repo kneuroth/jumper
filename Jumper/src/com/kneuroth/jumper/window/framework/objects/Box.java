@@ -10,6 +10,7 @@ import com.kneuroth.jumper.window.framework.GameObject;
 import com.kneuroth.jumper.window.framework.ObjectId;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
@@ -61,12 +62,17 @@ public class Box extends GameObject {
     public void render(Graphics g) {
         g.setColor(Color.orange);
         g.drawRect((int)x, (int)y, (int)height, (int)width);
+        
+         
+        Graphics2D g2d = (Graphics2D) g;
+        g.setColor(Color.red);
+        g2d.draw(getBounds());
+        g2d.draw(getBoundsRight());
+        g2d.draw(getBoundsLeft());
+        g2d.draw(getBoundsTop());
+        
     }
     
-    @Override
-    public Rectangle getBounds() {
-        return new Rectangle((int)x, (int)y, (int)height, (int)width);
-    }
 
     @Override
     public float getHeight() {
@@ -97,6 +103,25 @@ public class Box extends GameObject {
     public void setWidth(float width) {
         this.width = width;
         
+    }
+
+ 
+    @Override
+    public Rectangle getBounds() {
+        return new Rectangle((int) ((int)x + (getWidth()/2) - (getWidth()/2)/2), (int) ((int)y + (getHeight()/2)), (int)getWidth()/2, (int)getHeight()/2);
+    }
+    
+    @Override
+    public Rectangle getBoundsTop() {
+        return new Rectangle((int) ((int)x + (getWidth()/2) - (getWidth()/2)/2), (int)y, (int)getWidth()/2, (int)getHeight()/2);
+    }
+    @Override
+    public Rectangle getBoundsRight() {
+        return new Rectangle((int) ((int)x + getWidth() -10), (int)y + 5, (int)10, (int)getHeight() - 10);
+    }
+    @Override
+    public Rectangle getBoundsLeft() {
+        return new Rectangle((int)x, (int)y + 5, (int)10, (int)getHeight() - 10);
     }
     
 }

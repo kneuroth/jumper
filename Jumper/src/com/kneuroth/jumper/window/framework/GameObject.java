@@ -98,26 +98,22 @@ public abstract class GameObject {
                                 jumping = false;
                             }else{
                                 falling = true;
-                            }       if(getBoundsRight().intersects(tempObject.getBounds())){
-                                //System.out.println("YES");
-                                //idList.add(handler.object.get(i).getId());
-                                //x = tempObject.getX() - 32;
+                            }       
+                            if(getBoundsRight().intersects(tempObject.getBounds())){
+                                idList.add(handler.object.get(i).getId());
                                 x = tempObject.getX() - 41;
-                                //y = tempObject.getY();
-                                //x = tempObject.getX() - 36;
+
                                 velX = 0;
-                                //velY = 0;
+                
                                 onWall = true;
-                            }       if(getBoundsLeft().intersects(tempObject.getBounds())){
-                                //idList.add(handler.object.get(i).getId());
+                            }       
+                            if(getBoundsLeft().intersects(tempObject.getBounds())){
+                                idList.add(handler.object.get(i).getId());
+
                                 x = tempObject.getX() + 33;
-                                //y = tempObject.getY();
-                                //System.out.println("Left");
+
                                 velX = 0;
-                                //x = tempObject.getX();
 
-
-                                //velY = 0;
                                 onWall = true;
                             }       break;
                         case Rail:
@@ -152,15 +148,13 @@ public abstract class GameObject {
                                 velY = 0;
                             }       break;
                         case Box:
-                        if(getBoundsRight().intersects(tempObject.getBounds()));
-                        else if(getBoundsLeft().intersects(tempObject.getBounds()));
-                        else if(getBounds().intersects(tempObject.getBounds()) && velY >= 0){
-                            idList.add(handler.object.get(i).getId());
-                            y = tempObject.getY() - getHeight() ;//removing this makes slider block
-                            falling = false;
-                            jumping = false;
-                            velY = 0;
-                        }       break;
+                            if(getBounds().intersects(tempObject.getBoundsTop()) && velY >= 0){
+                                idList.add(handler.object.get(i).getId());
+                                y = tempObject.getY() - getHeight() ;//removing this makes slider block
+                                falling = false;
+                                jumping = false;
+                                velY = 0;
+                            }       break;
                             
                         default:
                             break;
@@ -175,7 +169,8 @@ public abstract class GameObject {
                                 idList.add(handler.object.get(i).getId());
                                 y = tempObject.getY()+ 32;//removing this makes slider block
                                 velY = 0;
-                            }       if(getBounds().intersects(tempObject.getBounds())){
+                            }       
+                            if(getBounds().intersects(tempObject.getBounds())){
                                 idList.add(handler.object.get(i).getId());
                                 y = tempObject.getY() - getHeight();
                                 velY = 0;
@@ -183,26 +178,20 @@ public abstract class GameObject {
                                 jumping = false;
                             }else{
                                 falling = true;
-                            }       if(getBoundsRight().intersects(tempObject.getBounds())){
-                                //System.out.println("YES");
-                                //idList.add(handler.object.get(i).getId());
-                                //x = tempObject.getX() - 32;
-                                x = tempObject.getX() - 41;
-                                //y = tempObject.getY();
-                                //x = tempObject.getX() - 36;
+                            }       
+                            if(getBoundsRight().intersects(tempObject.getBounds())){
+                                idList.add(handler.object.get(i).getId());
+
+                                x = tempObject.getX() - 31;
+
                                 velX = 0;
-                                //velY = 0;
                                 onWall = true;
-                            }       if(getBoundsLeft().intersects(tempObject.getBounds())){
-                                //idList.add(handler.object.get(i).getId());
+                            }       
+                            if(getBoundsLeft().intersects(tempObject.getBounds())){
+                                idList.add(handler.object.get(i).getId());
                                 x = tempObject.getX() + 33;
-                                //y = tempObject.getY();
-                                //System.out.println("Left");
+
                                 velX = 0;
-                                //x = tempObject.getX();
-
-
-                                //velY = 0;
                                 onWall = true;
                             }       break;
                         case Portal:
@@ -226,15 +215,19 @@ public abstract class GameObject {
                                 velY = 0;
                             }       break;
                         case Player:
-                            if(getBoundsLeft().intersects(tempObject.getBounds()) && tempObject.getVelX() > 0){
+                            if(getBoundsLeft().intersects(tempObject.getBoundsRight()) && tempObject.getVelX() > 0){
                                 velX = tempObject.getVelX();
                             }
-                            else if(getBoundsRight().intersects(tempObject.getBounds()) && tempObject.getVelX() < 0){
+                            else if(getBoundsRight().intersects(tempObject.getBoundsLeft()) && tempObject.getVelX() < 0){
                                 velX = tempObject.getVelX();
                             }       break;
                         case Box:
-                        if(getBoundsRight().intersects(tempObject.getBounds()));
-                        else if(getBoundsLeft().intersects(tempObject.getBounds()));
+                        if(getBoundsRight().intersects(tempObject.getBoundsLeft())){
+                            velX = tempObject.getVelX();
+                        }
+                        else if(getBoundsLeft().intersects(tempObject.getBounds())){
+                            velX = tempObject.getVelX();
+                        }
                         else if(getBounds().intersects(tempObject.getBounds()) && velY >= 0){
                             idList.add(handler.object.get(i).getId());
                             y = tempObject.getY() - getHeight() ;//removing this makes slider block

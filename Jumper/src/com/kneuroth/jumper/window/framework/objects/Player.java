@@ -83,14 +83,14 @@ public class Player extends GameObject{
         g.setColor(Color.blue);
         g.fillRect((int)x, (int)y, (int)width, (int)height);
         
-        /*
+        
         Graphics2D g2d = (Graphics2D) g;
         g.setColor(Color.red);
         g2d.draw(getBounds());
         g2d.draw(getBoundsRight());
         g2d.draw(getBoundsLeft());
         g2d.draw(getBoundsTop());
-        */
+        
     }
     
     
@@ -137,6 +137,24 @@ public class Player extends GameObject{
     @Override
     public void setCrouchHeight(float crouchHeight) {
         this.crouchHeight = crouchHeight;
+    }
+    
+        @Override
+    public Rectangle getBounds() {
+        return new Rectangle((int) ((int)x + (getWidth()/2) - (getWidth()/2)/2), (int) ((int)y + (getHeight()/2)), (int)getWidth()/2, (int)getHeight()/2);
+    }
+    
+    @Override
+    public Rectangle getBoundsTop() {
+        return new Rectangle((int) ((int)x + (getWidth()/2) - (getWidth()/2)/2), (int)y, (int)getWidth()/2, (int)getHeight()/2);
+    }
+    @Override
+    public Rectangle getBoundsRight() {
+        return new Rectangle((int) ((int)x + getWidth() -10), (int)y + 5, (int)10, (int)getHeight() - 10);
+    }
+    @Override
+    public Rectangle getBoundsLeft() {
+        return new Rectangle((int)x, (int)y + 5, (int)10, (int)getHeight() - 10);
     }
 
     
