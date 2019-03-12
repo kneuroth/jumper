@@ -9,6 +9,7 @@ import com.kneuroth.jumper.window.Game;
 import com.kneuroth.jumper.window.Handler;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import static java.lang.Math.abs;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -137,7 +138,9 @@ public abstract class GameObject {
                             if(getBounds().intersects(tempObject.getBounds())){
                                 idList.add(handler.object.get(i).getId());
                                 jumping = true;
-                                velY = -13;
+                                if(velY > -10){
+                                    velY = -1.5f * abs(velY);
+                                }
                             }       break;
                         case Platform:
                             if(getBounds().intersects(tempObject.getBounds()) && velY >= 0){

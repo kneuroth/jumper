@@ -70,7 +70,8 @@ public class Player extends GameObject{
         if(touching.contains(ObjectId.Rail)){
             x += velX;
         }*/
-        System.out.println(Collision());
+        Collision();
+        System.out.println(velY);
         
         
     }
