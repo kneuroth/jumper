@@ -13,6 +13,7 @@ import com.kneuroth.jumper.window.framework.objects.Platform;
 import com.kneuroth.jumper.window.framework.objects.Player;
 import com.kneuroth.jumper.window.framework.objects.Rail;
 import com.kneuroth.jumper.window.framework.objects.Box;
+import com.kneuroth.jumper.window.framework.objects.Portal;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -148,7 +149,11 @@ public class Game extends Canvas implements Runnable {
         
         //System.out.println("Width: "  + w + " Height: " + h);
         
+        int lastPortalX = 0;
+        int lastPortalY = 0;
+        
         for(int xx = 0; xx < h; xx++){
+            
             for(int yy = 0; yy < w; yy++){
                 int pixel = image.getRGB(xx, yy);
                 int red = (pixel >> 16) & 0xff;
@@ -167,6 +172,25 @@ public class Game extends Canvas implements Runnable {
                 if(red == 63 && green == 72 && blue == 204)handler.addObject(new Player(xx * 32, yy*32, handler, ObjectId.Player));
                 //Orange - Box
                 if(red == 255 && green == 127 && blue == 39)handler.addObject(new Box(xx * 32, yy*32, handler, ObjectId.Box));
+                //Light purple - Portal
+                if(red == 200 && green == 191 && blue == 231){
+                    //ensures that only pairs of portals are created, pairing 2 closest portals
+                    if(lastPortalX != 0 && lastPortalY != 0){
+                        Portal p1 = new Portal(xx * 32, yy * 32, ObjectId.Portal);
+                        Portal p2 = new Portal(lastPortalX, lastPortalY, ObjectId.Portal);
+                        System.out.println("NEW PAIR");
+                        
+                        
+                        p1.setSisterPortal(p2);
+                        p2.setSisterPortal(p1);
+                        
+                        lastPortalX = 0;
+                        lastPortalY = 0;
+                    }else{
+                        lastPortalX = xx * 32;
+                        lastPortalY = yy * 32;
+                    }
+                } 
             }
         }
     }

@@ -71,7 +71,7 @@ public class Player extends GameObject{
             x += velX;
         }*/
         Collision();
-        System.out.println(velY);
+        //System.out.println(velY);
         
         
     }

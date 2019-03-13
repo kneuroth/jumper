@@ -135,8 +135,9 @@ public abstract class GameObject {
                                 Portal tempPortal = (Portal)tempObject;
                                 
                                 idList.add(handler.object.get(i).getId());
-                                if(tempObject.getY() < Game.HEIGHT)
-                                    y = tempObject.getY() - Game.HEIGHT + 100;
+                                y = tempPortal.getY();
+                                x = tempPortal.getX();
+                                
                             }       break;
                         case BounceBlock:
                             if(getBounds().intersects(tempObject.getBounds())){

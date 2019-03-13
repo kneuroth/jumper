@@ -19,7 +19,9 @@ import java.util.LinkedList;
  */
 public class Portal extends GameObject {
     
-   private float height = 32, width = 32, crouchHeight = height/2;;
+   private float height = 32, width = 32, crouchHeight = height/2;
+   
+   Portal sisterPortal;
     
     
     public Portal(float x, float y, ObjectId id) {
@@ -31,11 +33,18 @@ public class Portal extends GameObject {
         
     }
 
+    public void setSisterPortal(Portal sisterPortal){
+        this.sisterPortal = sisterPortal;
+    }
+    
+    public Portal getSisterPortal(){
+        return sisterPortal;
+    }
+    
     @Override
     public void render(Graphics g) {
         g.setColor(Color.blue);
         g.drawRect((int)x, (int)y, 32, 32);
-        g.drawRect((int)x, (int)y - Game.HEIGHT + 100, (int)height, (int)width);
     }
 
     @Override
