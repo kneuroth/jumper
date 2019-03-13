@@ -7,6 +7,7 @@ package com.kneuroth.jumper.window.framework;
 
 import com.kneuroth.jumper.window.Game;
 import com.kneuroth.jumper.window.Handler;
+import com.kneuroth.jumper.window.framework.objects.Portal;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import static java.lang.Math.abs;
@@ -130,6 +131,9 @@ public abstract class GameObject {
                             }       break;
                         case Portal:
                             if(getBounds().intersects(tempObject.getBounds())){
+                                
+                                Portal tempPortal = (Portal)tempObject;
+                                
                                 idList.add(handler.object.get(i).getId());
                                 if(tempObject.getY() < Game.HEIGHT)
                                     y = tempObject.getY() - Game.HEIGHT + 100;
