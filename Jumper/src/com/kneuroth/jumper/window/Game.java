@@ -184,6 +184,9 @@ public class Game extends Canvas implements Runnable {
                         p1.setSisterPortal(p2);
                         p2.setSisterPortal(p1);
                         
+                        handler.addObject(p1);
+                        handler.addObject(p2);
+                        
                         lastPortalX = 0;
                         lastPortalY = 0;
                     }else{

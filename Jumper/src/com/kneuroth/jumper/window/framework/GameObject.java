@@ -135,8 +135,14 @@ public abstract class GameObject {
                                 Portal tempPortal = (Portal)tempObject;
                                 
                                 idList.add(handler.object.get(i).getId());
-                                y = tempPortal.getY();
-                                x = tempPortal.getX();
+                                if(velY < 0){
+                                    y = tempPortal.getSisterPortal().getY() - tempPortal.getHeight() - getHeight()/3;
+                                }else{
+                                    y = tempPortal.getSisterPortal().getY() + 2;
+                                }
+                                x = tempPortal.getSisterPortal().getX();
+                                
+                                //System.out.println("Go to: " + x + " and " + y);
                                 
                             }       break;
                         case BounceBlock:
