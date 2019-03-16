@@ -210,9 +210,19 @@ public abstract class GameObject {
                             }       break;
                         case Portal:
                             if(getBounds().intersects(tempObject.getBounds())){
+                                
+                                Portal tempPortal = (Portal)tempObject;
+                                
                                 idList.add(handler.object.get(i).getId());
-                                if(tempObject.getY() < Game.HEIGHT)
-                                    y = tempObject.getY() - Game.HEIGHT + 100;
+                                if(velY < 0){
+                                    y = tempPortal.getSisterPortal().getY() - tempPortal.getHeight() - getHeight()/3;
+                                }else{
+                                    y = tempPortal.getSisterPortal().getY() + 2;
+                                }
+                                x = tempPortal.getSisterPortal().getX();
+                                
+                                //System.out.println("Go to: " + x + " and " + y);
+                                
                             }       break;
                         case BounceBlock:
                             if(getBounds().intersects(tempObject.getBounds())){
