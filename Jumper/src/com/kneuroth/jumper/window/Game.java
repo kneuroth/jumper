@@ -173,7 +173,7 @@ public class Game extends Canvas implements Runnable {
                 //Orange - Box
                 if(red == 255 && green == 127 && blue == 39)handler.addObject(new Box(xx * 32, yy*32, handler, ObjectId.Box));
                 //Light purple - Portal
-                if(red == 200 && green == 191 && blue == 231){
+                /*if(red == 200 && green == 191 && blue == 231){
                     //ensures that only pairs of portals are created, pairing 2 closest portals
                     if(lastPortalX != 0 && lastPortalY != 0){
                         Portal p1 = new Portal(xx * 32, yy * 32, ObjectId.Portal);
@@ -193,7 +193,7 @@ public class Game extends Canvas implements Runnable {
                         lastPortalX = xx * 32;
                         lastPortalY = yy * 32;
                     }
-                } 
+                } */
             }
         }
     }

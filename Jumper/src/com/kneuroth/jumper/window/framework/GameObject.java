@@ -106,7 +106,7 @@ public abstract class GameObject {
                                 x = tempObject.getX() - 41;
 
                                 velX = 0;
-                
+                      
                                 onWall = true;
                             }       
                             if(getBoundsLeft().intersects(tempObject.getBounds())){
@@ -115,7 +115,7 @@ public abstract class GameObject {
                                 x = tempObject.getX() + 33;
 
                                 velX = 0;
-
+                         
                                 onWall = true;
                             }       break;
                         case Rail:
