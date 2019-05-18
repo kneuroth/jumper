@@ -9,6 +9,7 @@ import com.kneuroth.jumper.window.Game;
 import com.kneuroth.jumper.window.Handler;
 import com.kneuroth.jumper.window.framework.GameObject;
 import com.kneuroth.jumper.window.framework.ObjectId;
+import com.kneuroth.jumper.window.framework.Texture;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -23,13 +24,15 @@ import java.util.LinkedList;
  */
 public class Player extends GameObject{
     
+    Texture tex = Game.getInstance();
+    
     private float width = 40, height = 60, crouchHeight = height/2; //48 96
     private float gravity = 0.7f;
 
     
     private final float MAX_SPEED = 10;
     
-
+    
    
     
     public Player(float x, float y, Handler handler, ObjectId id){

@@ -7,6 +7,7 @@ package com.kneuroth.jumper.window;
 
 import com.kneuroth.jumper.window.framework.KeyInput;
 import com.kneuroth.jumper.window.framework.ObjectId;
+import com.kneuroth.jumper.window.framework.Texture;
 import com.kneuroth.jumper.window.framework.objects.Block;
 import com.kneuroth.jumper.window.framework.objects.BounceBlock;
 import com.kneuroth.jumper.window.framework.objects.Platform;
@@ -35,6 +36,7 @@ public class Game extends Canvas implements Runnable {
     
     Handler handler;
     Camera cam;
+    static Texture tex;
     
     private BufferedImage level = null;
     
@@ -43,6 +45,8 @@ public class Game extends Canvas implements Runnable {
     private void init(){
         WIDTH = getWidth();
         HEIGHT = getHeight();
+        
+        tex = new Texture();
         
         BufferedImageLoader loader = new BufferedImageLoader();
         level = loader.loadImage("/level.png"); //loading level
@@ -161,7 +165,19 @@ public class Game extends Canvas implements Runnable {
                 int blue = (pixel) & 0xff;
                 
                 //Black - Block
-                if(red == 0 && green == 0 && blue == 0)handler.addObject(new Block(xx * 32, yy * 32, ObjectId.Block));
+                if(red == 0 && green == 0 && blue == 0)handler.addObject(new Block(xx * 32, yy * 32, 0, ObjectId.Block));
+                //Grey - Under block
+                if(red == 127 && green == 127 && blue == 127)handler.addObject(new Block(xx * 32, yy * 32, 1, ObjectId.Block));
+                
+                //Grey - Left wall
+                if(red == 100 && green == 100 && blue == 100)handler.addObject(new Block(xx * 32, yy * 32, 2, ObjectId.Block));
+                
+                //Grey - Right wall
+                if(red == 50 && green == 50 && blue == 50)handler.addObject(new Block(xx * 32, yy * 32, 3, ObjectId.Block));
+                
+                //Grey - Both walls
+                if(red == 150 && green == 150 && blue == 150)handler.addObject(new Block(xx * 32, yy * 32, 4, ObjectId.Block));
+                
                 //Brown - Platform
                 if(red == 185 && green == 122 && blue == 87)handler.addObject(new Platform(xx*32, yy*32, ObjectId.Platform));
                 //Purple - Bouncy Block
@@ -196,6 +212,10 @@ public class Game extends Canvas implements Runnable {
                 } */
             }
         }
+    }
+    
+    public static Texture getInstance(){
+        return tex;
     }
     
     public static void main(String args[]){
