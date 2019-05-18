@@ -19,6 +19,7 @@ public class Texture {
     private BufferedImage player_sheet = null;
     
     public BufferedImage[] block = new BufferedImage[15];
+    public BufferedImage[] player = new BufferedImage[1];
     
     public Texture(){
         
@@ -59,6 +60,8 @@ public class Texture {
         block[11] = bs.grabImage(12, 1, 32, 32);//corner up left
         block[12] = bs.grabImage(13, 1, 32, 32);//corner down left
         block[13] = bs.grabImage(14, 1, 32, 32);//corner down right
+        
+        player[0] = ps.grabImage(1, 1, 40, 60); //idle
     }
     
     

@@ -25,7 +25,7 @@ import java.util.LinkedList;
 public class Player extends GameObject{
     
     Texture tex = Game.getInstance();
-    
+    //40 , 60
     private float width = 40, height = 60, crouchHeight = height/2; //48 96
     private float gravity = 0.7f;
 
@@ -84,8 +84,7 @@ public class Player extends GameObject{
         
         
         
-        g.setColor(Color.blue);
-        g.fillRect((int)x, (int)y, (int)width, (int)height);
+        g.drawImage(tex.player[0], (int)x, (int)y, null);
         
         
         /*Graphics2D g2d = (Graphics2D) g;
