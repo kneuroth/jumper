@@ -166,6 +166,7 @@ public class Game extends Canvas implements Runnable {
                 
                 //Black - Block
                 if(red == 0 && green == 0 && blue == 0)handler.addObject(new Block(xx * 32, yy * 32, 0, ObjectId.Block));
+                
                 //Grey - Under block
                 if(red == 127 && green == 127 && blue == 127)handler.addObject(new Block(xx * 32, yy * 32, 1, ObjectId.Block));
                 
@@ -177,6 +178,37 @@ public class Game extends Canvas implements Runnable {
                 
                 //Grey - Both walls
                 if(red == 150 && green == 150 && blue == 150)handler.addObject(new Block(xx * 32, yy * 32, 4, ObjectId.Block));
+                
+                //Grey - Ceiling
+                if(red == 200 && green == 200 && blue == 200)handler.addObject(new Block(xx * 32, yy * 32, 5, ObjectId.Block));
+                
+                //Big corners
+                //Grey - Corner up right
+                if(red == 10 && green == 20 && blue == 30)handler.addObject(new Block(xx * 32, yy * 32, 6, ObjectId.Block));
+                
+                //Grey - Corner up left
+                if(red == 20 && green == 30 && blue == 40)handler.addObject(new Block(xx * 32, yy * 32, 7, ObjectId.Block));
+                
+                //Grey - Corner down left
+                if(red == 30 && green == 40 && blue == 50)handler.addObject(new Block(xx * 32, yy * 32, 8, ObjectId.Block));
+                
+                //Grey - Corner down right
+                if(red == 40 && green == 50 && blue == 60)handler.addObject(new Block(xx * 32, yy * 32, 9, ObjectId.Block));
+                
+                //Small corners
+                //Grey - Small corner up right
+                if(red == 70 && green == 80 && blue == 90)handler.addObject(new Block(xx * 32, yy * 32, 10, ObjectId.Block));
+                
+                //Grey - Small corner up left
+                if(red == 80 && green == 90 && blue == 100)handler.addObject(new Block(xx * 32, yy * 32, 11, ObjectId.Block));
+                
+                //Grey - Small corner down left
+                if(red == 90 && green == 100 && blue == 110)handler.addObject(new Block(xx * 32, yy * 32, 12, ObjectId.Block));
+                
+                //Grey - Small corner down right
+                if(red == 100 && green == 110 && blue == 120)handler.addObject(new Block(xx * 32, yy * 32, 13, ObjectId.Block));
+                
+                
                 
                 //Brown - Platform
                 if(red == 185 && green == 122 && blue == 87)handler.addObject(new Platform(xx*32, yy*32, ObjectId.Platform));

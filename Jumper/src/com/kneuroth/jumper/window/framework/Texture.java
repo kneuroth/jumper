@@ -18,7 +18,7 @@ public class Texture {
     private BufferedImage block_sheet = null;
     private BufferedImage player_sheet = null;
     
-    public BufferedImage[] block = new BufferedImage[5];
+    public BufferedImage[] block = new BufferedImage[15];
     
     public Texture(){
         
@@ -38,11 +38,27 @@ public class Texture {
     }
     
     private void getTextures(){
-        block[0] = bs.grabImage(1,1,32,32);//Floor
+        /*
+        [floor]   [middle]  [left wall] [right wall] [ceiling]Flats
+        [Upright] [upleft] [downleft]  [downright]           Outside corners
+        
+        */
+        block[0] = bs.grabImage(1, 1, 32, 32);//Floor
         block[1] = bs.grabImage(2, 1, 32, 32);//middle
         block[2] = bs.grabImage(3, 1, 32, 32);//Left wall
         block[3] = bs.grabImage(4, 1, 32, 32); //Right wall
         block[4] = bs.grabImage(5, 1, 32, 32); //Both wall
+        block[5] = bs.grabImage(6, 1, 32, 32); //Ceiling
+        
+        block[6] = bs.grabImage(7, 1, 32, 32);//corner up right
+        block[7] = bs.grabImage(8, 1, 32, 32);//corner up left
+        block[8] = bs.grabImage(9, 1, 32, 32);//corner down left
+        block[9] = bs.grabImage(10, 1, 32, 32);//corner down right
+        
+        block[10] = bs.grabImage(11, 1, 32, 32);//corner up right
+        block[11] = bs.grabImage(12, 1, 32, 32);//corner up left
+        block[12] = bs.grabImage(13, 1, 32, 32);//corner down left
+        block[13] = bs.grabImage(14, 1, 32, 32);//corner down right
     }
     
     
