@@ -27,7 +27,7 @@ public class Texture {
         
         try{
             block_sheet = loader.loadImage("/block_sheet.png");
-            player_sheet = loader.loadImage("/player_sheet.png");
+            player_sheet = loader.loadImage("/player_sheet_backup.png");
         }catch(Exception e){
             e.printStackTrace();
         }
