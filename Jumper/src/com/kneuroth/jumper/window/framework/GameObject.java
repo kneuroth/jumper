@@ -33,7 +33,8 @@ public abstract class GameObject {
     protected boolean falling = true;
     protected boolean jumping = false;
     
-    protected boolean onWall = false;
+    protected boolean onLeftWall = false;
+    protected boolean onRightWall = false;
     
     
     public GameObject(float x, float y, ObjectId id){
@@ -48,12 +49,7 @@ public abstract class GameObject {
     
     public abstract float getHeight();
     
-    public abstract void setHeight(float height);
-    
-    public abstract float getCrouchHeight();
-    
-    public abstract void setCrouchHeight(float crouchHeight);
-   
+    public abstract void setHeight(float height);   
     
     public abstract float getWidth();
     
@@ -103,20 +99,18 @@ public abstract class GameObject {
                             }       
                             if(getBoundsRight().intersects(tempObject.getBounds())){
                                 idList.add(handler.object.get(i).getId());
-                                x = tempObject.getX() - 41;
-
+                                idList.add(ObjectId.RightWall);
+                                x = tempObject.getX() - 39;
+                                falling = false;
                                 velX = 0;
                       
-                                onWall = true;
                             }       
                             if(getBoundsLeft().intersects(tempObject.getBounds())){
                                 idList.add(handler.object.get(i).getId());
-
-                                x = tempObject.getX() + 33;
-
+                                idList.add(ObjectId.LeftWall);
+                                x = tempObject.getX() + 29;
+                                falling = false;
                                 velX = 0;
-                         
-                                onWall = true;
                             }       break;
                         case Rail:
                             if(getBoundsTop().intersects(tempObject.getBounds())){
@@ -195,18 +189,18 @@ public abstract class GameObject {
                             }       
                             if(getBoundsRight().intersects(tempObject.getBounds())){
                                 idList.add(handler.object.get(i).getId());
+                                idList.add(ObjectId.RightWall);
 
                                 x = tempObject.getX() - 31;
 
                                 velX = 0;
-                                onWall = true;
                             }       
                             if(getBoundsLeft().intersects(tempObject.getBounds())){
                                 idList.add(handler.object.get(i).getId());
+                                idList.add(ObjectId.LeftWall);
                                 x = tempObject.getX() + 33;
 
                                 velX = 0;
-                                onWall = true;
                             }       break;
                         case Portal:
                             if(getBounds().intersects(tempObject.getBounds())){

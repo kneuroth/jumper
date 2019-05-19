@@ -75,11 +75,8 @@ public class Player extends GameObject{
         x += velX;
         y += velY;
         
-        if(onWall == true){
-            jumping = false;
-            falling = false;
-            onWall = false;
-        }
+        
+        
         
         /*List<ObjectId> touching = Collision(object);
         if(touching.contains(ObjectId.Rail)){
@@ -90,8 +87,14 @@ public class Player extends GameObject{
         playerClimbRight.runAnimation();
         playerClimbLeft.runAnimation();
         touching = Collision();
-        //System.out.println(x);
-           
+        System.out.println(touching);
+            
+        onLeftWall = touching.contains(ObjectId.LeftWall);
+        onRightWall = touching.contains(ObjectId.RightWall);
+        
+        if(onLeftWall || onRightWall){
+            jumping = false;
+        }
         
     }
     
@@ -114,6 +117,10 @@ public class Player extends GameObject{
             if(tempCount > 0){
                 if(touching.contains(ObjectId.Rail))
                     g.drawImage(tex.player[5], (int)x, (int)y, null);
+                else if(touching.contains(ObjectId.LeftWall))
+                    g.drawImage(tex.player[10], (int)x, (int)y, null);
+                else if(touching.contains(ObjectId.RightWall))
+                    g.drawImage(tex.player[11], (int)x, (int)y, null);
                 else
                     g.drawImage(tex.player[0], (int)x, (int)y, null);
             }else{
@@ -167,15 +174,7 @@ public class Player extends GameObject{
         this.width = width;
     }
 
-    @Override
-    public float getCrouchHeight() {
-        return crouchHeight;
-    }
 
-    @Override
-    public void setCrouchHeight(float crouchHeight) {
-        this.crouchHeight = crouchHeight;
-    }
     
         @Override
     public Rectangle getBounds() {

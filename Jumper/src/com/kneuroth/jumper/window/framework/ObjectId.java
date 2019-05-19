@@ -17,6 +17,9 @@ public enum ObjectId {
     Portal(),
     BounceBlock(),
     Platform(),
-    Box();
+    Box(),
+    LeftWall(),
+    RightWall()
+    ;
     
 }

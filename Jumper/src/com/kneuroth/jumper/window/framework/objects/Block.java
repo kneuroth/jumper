@@ -68,15 +68,6 @@ public class Block extends GameObject{
         this.width = width;
     }
 
-    @Override
-    public float getCrouchHeight() {
-        return crouchHeight;
-    }
-
-    @Override
-    public void setCrouchHeight(float crouchHeight) {
-        this.crouchHeight = crouchHeight;
-    }
 
 
 

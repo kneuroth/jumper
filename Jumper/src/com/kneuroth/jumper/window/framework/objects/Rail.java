@@ -18,7 +18,7 @@ import java.util.LinkedList;
  */
 public class Rail extends GameObject{
     
-    private float height = 32, width = 16, crouchHeight = height/2;;
+    private float height = 32, width = 16;
     
     public Rail(float x, float y, ObjectId id) {
         super(x, y, id);
@@ -60,15 +60,7 @@ public class Rail extends GameObject{
         this.width = width;
     }
 
-    @Override
-    public float getCrouchHeight() {
-        return crouchHeight;
-    }
 
-    @Override
-    public void setCrouchHeight(float crouchHeight) {
-        this.crouchHeight = crouchHeight;
-    }
 
 
     

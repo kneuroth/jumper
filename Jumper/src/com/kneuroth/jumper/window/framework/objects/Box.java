@@ -21,7 +21,7 @@ import java.util.LinkedList;
 public class Box extends GameObject {
     
     
-    private float height = 32, width = 32, crouchHeight = height/2;
+    private float height = 32, width = 32;
     private float gravity = 0.7f;
     
     private final float MAX_SPEED = 10;
@@ -84,15 +84,6 @@ public class Box extends GameObject {
         this.height = height;
     }
 
-    @Override
-    public float getCrouchHeight() {
-        return crouchHeight;
-    }
-
-    @Override
-    public void setCrouchHeight(float crouchHeight) {
-        this.crouchHeight = crouchHeight;
-    }
 
     @Override
     public float getWidth() {

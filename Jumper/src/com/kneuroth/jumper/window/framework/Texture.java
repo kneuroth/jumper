@@ -19,7 +19,7 @@ public class Texture {
     private BufferedImage player_sheet = null;
     
     public BufferedImage[] block = new BufferedImage[15];
-    public BufferedImage[] player = new BufferedImage[10];
+    public BufferedImage[] player = new BufferedImage[12];
     
     public Texture(){
         
@@ -75,7 +75,8 @@ public class Texture {
         player[8] = ps.grabImage(4, 2, 40, 60);
         player[9] = ps.grabImage(5, 2, 40, 60);
         
-        
+        player[10] = ps.grabImage(1, 3, 40, 60);//on wall
+        player[11] = ps.grabImage(2, 3, 40, 60);
         
     }
     
