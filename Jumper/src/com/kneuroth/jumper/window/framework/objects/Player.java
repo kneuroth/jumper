@@ -32,10 +32,14 @@ public class Player extends GameObject{
     
     private Animation playerWalkRight;
     private Animation playerWalkLeft;
+    private Animation playerClimbRight;
+    private Animation playerClimbLeft;
     
     private final float MAX_SPEED = 10;
     
+    List<ObjectId> touching;
     
+    int tempCount = 0;
    
     
     public Player(float x, float y, Handler handler, ObjectId id){
@@ -44,6 +48,8 @@ public class Player extends GameObject{
         
         playerWalkRight = new Animation(8, tex.player[1], tex.player[2]);
         playerWalkLeft = new Animation(8, tex.player[3], tex.player[4]);
+        playerClimbRight = new Animation(8, tex.player[6], tex.player[7]);
+        playerClimbLeft = new Animation(8, tex.player[8], tex.player[9]);
     }
 
     @Override
@@ -79,23 +85,41 @@ public class Player extends GameObject{
         if(touching.contains(ObjectId.Rail)){
             x += velX;
         }*/
-        Collision();
-        //System.out.println(x);
-           
         playerWalkRight.runAnimation();
         playerWalkLeft.runAnimation();
+        playerClimbRight.runAnimation();
+        playerClimbLeft.runAnimation();
+        touching = Collision();
+        //System.out.println(x);
+           
         
     }
     
     @Override
     public void render(Graphics g) {
-        
-        if(velX > 0)
-            playerWalkRight.drawAnimation(g, (int)x, (int)y);
-        else if(velX < 0)
-            playerWalkLeft.drawAnimation(g, (int)x, (int)y);
-        else
-            g.drawImage(tex.player[0], (int)x, (int)y, null);
+        //System.out.println(touching.contains(ObjectId.Rail));
+        if(velX > 0){
+            if(touching.contains(ObjectId.Rail))
+                playerClimbRight.drawAnimation(g, (int)x, (int)y);
+            else
+                playerWalkRight.drawAnimation(g, (int)x, (int)y);
+        }
+        else if(velX < 0){
+            if(touching.contains(ObjectId.Rail))
+                playerClimbLeft.drawAnimation(g, (int)x, (int)y);
+            else
+                playerWalkLeft.drawAnimation(g, (int)x, (int)y);
+        }
+        else{
+            if(tempCount > 0){
+                if(touching.contains(ObjectId.Rail))
+                    g.drawImage(tex.player[5], (int)x, (int)y, null);
+                else
+                    g.drawImage(tex.player[0], (int)x, (int)y, null);
+            }else{
+                tempCount = 1;
+            }
+        }
         
         
         /*Graphics2D g2d = (Graphics2D) g;
