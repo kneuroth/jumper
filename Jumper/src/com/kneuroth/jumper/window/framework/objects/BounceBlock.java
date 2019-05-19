@@ -5,8 +5,10 @@
  */
 package com.kneuroth.jumper.window.framework.objects;
 
+import com.kneuroth.jumper.window.Game;
 import com.kneuroth.jumper.window.framework.GameObject;
 import com.kneuroth.jumper.window.framework.ObjectId;
+import com.kneuroth.jumper.window.framework.Texture;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -18,10 +20,14 @@ import java.util.LinkedList;
  */
 public class BounceBlock extends GameObject{
     
-    private float height = 32, width = 32;
+    Texture tex = Game.getInstance();
     
-    public BounceBlock(float x, float y, ObjectId id) {
+    private float height = 32, width = 32;
+    private int type;;
+    
+    public BounceBlock(float x, float y, int type, ObjectId id) {
         super(x, y, id);
+        this.type = type;
     }
 
     @Override
@@ -30,8 +36,7 @@ public class BounceBlock extends GameObject{
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.magenta);
-        g.drawRect((int)x, (int)y, 32, 32);
+        g.drawImage(tex.block[type], (int)x, (int)y, null);
     }
 
     @Override

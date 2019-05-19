@@ -211,11 +211,11 @@ public class Game extends Canvas implements Runnable {
                 
                 
                 //Brown - Platform
-                if(red == 185 && green == 122 && blue == 87)handler.addObject(new Platform(xx*32, yy*32, ObjectId.Platform));
+                if(red == 185 && green == 122 && blue == 87)handler.addObject(new Platform(xx*32, yy*32, 14, ObjectId.Platform));
                 //Purple - Bouncy Block
-                if(red == 163 && green == 73 && blue == 164)handler.addObject(new BounceBlock(xx*32, yy*32, ObjectId.BounceBlock));
+                if(red == 163 && green == 73 && blue == 164)handler.addObject(new BounceBlock(xx*32, yy*32,16,  ObjectId.BounceBlock));
                 //Green - Rail
-                if(red == 34 && green == 177 && blue == 76)handler.addObject(new Rail(xx*32, yy*32, ObjectId.Rail));
+                if(red == 34 && green == 177 && blue == 76)handler.addObject(new Rail(xx*32, yy*32, 15, ObjectId.Rail));
                 //Blue - Player
                 if(red == 63 && green == 72 && blue == 204)handler.addObject(new Player(xx * 32, yy*32, handler, ObjectId.Player));
                 //Orange - Box

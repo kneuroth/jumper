@@ -18,7 +18,7 @@ public class Texture {
     private BufferedImage block_sheet = null;
     private BufferedImage player_sheet = null;
     
-    public BufferedImage[] block = new BufferedImage[15];
+    public BufferedImage[] block = new BufferedImage[17];
     public BufferedImage[] player = new BufferedImage[12];
     
     public Texture(){
@@ -60,6 +60,12 @@ public class Texture {
         block[11] = bs.grabImage(12, 1, 32, 32);//corner up left
         block[12] = bs.grabImage(13, 1, 32, 32);//corner down left
         block[13] = bs.grabImage(14, 1, 32, 32);//corner down right
+        
+        block[14] = bs.grabImage(1, 2, 32, 32);//Platform floor
+        
+        block[15] = bs.grabImage(2, 2, 32, 32);//Rail
+        
+        block[16] = bs.grabImage(1, 3, 32, 32);
         
         player[0] = ps.grabImage(1, 1, 40, 60); //idle
         

@@ -5,8 +5,10 @@
  */
 package com.kneuroth.jumper.window.framework.objects;
 
+import com.kneuroth.jumper.window.Game;
 import com.kneuroth.jumper.window.framework.GameObject;
 import com.kneuroth.jumper.window.framework.ObjectId;
+import com.kneuroth.jumper.window.framework.Texture;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -17,11 +19,14 @@ import java.util.LinkedList;
  * @author Kelly
  */
 public class Rail extends GameObject{
-    
+    Texture tex = Game.getInstance();
     private float height = 32, width = 16;
     
-    public Rail(float x, float y, ObjectId id) {
+    private int type;
+    
+    public Rail(float x, float y, int type, ObjectId id) {
         super(x, y, id);
+        this.type = type;
     }
     
     @Override
@@ -31,8 +36,7 @@ public class Rail extends GameObject{
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.green);
-        g.drawRect((int)x, (int)y, (int)height, (int)width);
+        g.drawImage(tex.block[type], (int)x, (int)y, null);
     }
 
     @Override
