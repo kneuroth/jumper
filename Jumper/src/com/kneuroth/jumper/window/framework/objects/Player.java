@@ -5,6 +5,7 @@
  */
 package com.kneuroth.jumper.window.framework.objects;
 
+import com.kneuroth.jumper.window.Animation;
 import com.kneuroth.jumper.window.Game;
 import com.kneuroth.jumper.window.Handler;
 import com.kneuroth.jumper.window.framework.GameObject;
@@ -28,7 +29,9 @@ public class Player extends GameObject{
     //40 , 60
     private float width = 40, height = 60, crouchHeight = height/2; //48 96
     private float gravity = 0.7f;
-
+    
+    private Animation playerWalkRight;
+    private Animation playerWalkLeft;
     
     private final float MAX_SPEED = 10;
     
@@ -38,6 +41,9 @@ public class Player extends GameObject{
     public Player(float x, float y, Handler handler, ObjectId id){
         super(x, y, id);
         super.handler = handler;
+        
+        playerWalkRight = new Animation(8, tex.player[1], tex.player[2]);
+        playerWalkLeft = new Animation(8, tex.player[3], tex.player[4]);
     }
 
     @Override
@@ -75,16 +81,21 @@ public class Player extends GameObject{
         }*/
         Collision();
         //System.out.println(x);
-        
+           
+        playerWalkRight.runAnimation();
+        playerWalkLeft.runAnimation();
         
     }
     
     @Override
     public void render(Graphics g) {
         
-        
-        
-        g.drawImage(tex.player[0], (int)x, (int)y, null);
+        if(velX > 0)
+            playerWalkRight.drawAnimation(g, (int)x, (int)y);
+        else if(velX < 0)
+            playerWalkLeft.drawAnimation(g, (int)x, (int)y);
+        else
+            g.drawImage(tex.player[0], (int)x, (int)y, null);
         
         
         /*Graphics2D g2d = (Graphics2D) g;
