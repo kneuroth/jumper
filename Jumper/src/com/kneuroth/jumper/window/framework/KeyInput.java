@@ -47,9 +47,16 @@ public class KeyInput extends KeyAdapter{
                         
                     }
                 
+                if((key == KeyEvent.VK_DOWN  || key == KeyEvent.VK_S) && tempObject.touching.contains(ObjectId.Platform)){ //bit of a work around. switch between crouch height and regular height
+                    
+                    tempObject.setY(tempObject.y + 45);
+                    
+                }
                 
-                
-                 if(key == KeyEvent.VK_SPACE && !tempObject.isJumping()){
+                if(key == KeyEvent.VK_SPACE && (!tempObject.isJumping() || tempObject.touching.contains(ObjectId.Rail))){
+                    System.out.println("ye");
+                    if(tempObject.touching.contains(ObjectId.Rail))
+                        tempObject.setY(tempObject.y - tempObject.getHeight());
                     tempObject.setJumping(true);
                     tempObject.setVelY(-13);
                 }

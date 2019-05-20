@@ -22,7 +22,7 @@ public class Platform extends GameObject {
     
     Texture tex = Game.getInstance();
     
-    private float height = 32, width = 32;
+    private float height = 32, width = 16;
     private int type;
 
     public Platform(float x, float y, int type, ObjectId id) {

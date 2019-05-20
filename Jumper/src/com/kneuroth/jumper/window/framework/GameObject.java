@@ -36,6 +36,8 @@ public abstract class GameObject {
     protected boolean onLeftWall = false;
     protected boolean onRightWall = false;
     
+    protected List<ObjectId> touching;
+    
     
     public GameObject(float x, float y, ObjectId id){
         this.x = x;
@@ -90,7 +92,7 @@ public abstract class GameObject {
                                 velY = 0;
                             }       if(getBounds().intersects(tempObject.getBounds())){
                                 idList.add(handler.object.get(i).getId());
-                                y = tempObject.getY() - getHeight();
+                                y = tempObject.getY() - getHeight() + 1;
                                 velY = 0;
                                 falling = false;
                                 jumping = false;
@@ -150,7 +152,7 @@ public abstract class GameObject {
                         case Platform:
                             if(getBounds().intersects(tempObject.getBounds()) && velY >= 0){
                                 idList.add(handler.object.get(i).getId());
-                                y = tempObject.getY() - getHeight() ;//removing this makes slider block
+                                y = tempObject.getY() - getHeight() + 1 ;//removing this makes slider block
                                 falling = false;
                                 jumping = false;
                                 velY = 0;

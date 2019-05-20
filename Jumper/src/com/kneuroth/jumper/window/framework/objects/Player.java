@@ -37,7 +37,7 @@ public class Player extends GameObject{
     
     private final float MAX_SPEED = 10;
     
-    List<ObjectId> touching;
+    
     
     int tempCount = 0;
    
