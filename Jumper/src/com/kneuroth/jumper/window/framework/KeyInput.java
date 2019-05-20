@@ -56,7 +56,7 @@ public class KeyInput extends KeyAdapter{
                 if(key == KeyEvent.VK_SPACE && (!tempObject.isJumping() || tempObject.touching.contains(ObjectId.Rail))){
                     System.out.println("ye");
                     if(tempObject.touching.contains(ObjectId.Rail))
-                        tempObject.setY(tempObject.y - tempObject.getHeight());
+                        tempObject.setY(tempObject.y - tempObject.getHeight()/2);
                     tempObject.setJumping(true);
                     tempObject.setVelY(-13);
                 }
