@@ -49,7 +49,7 @@ public class Game extends Canvas implements Runnable {
         tex = new Texture();
         
         BufferedImageLoader loader = new BufferedImageLoader();
-        level = loader.loadImage("/level.png"); //loading level
+        level = loader.loadImage("/Level.png"); //loading level
         
         handler = new Handler();
         
